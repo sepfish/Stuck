@@ -1,4 +1,7 @@
+import java.awt.Color;
 import java.awt.Graphics;
+
+import javax.swing.JOptionPane;
 
 public class GameObject {
 	int x;
@@ -6,6 +9,7 @@ public class GameObject {
 	int width;
 	int height;
 	String movingState = "";
+	Boolean isChecked = false;
 	
 	GameObject(int x, int y, int width, int height) {
 		this.x = x;
@@ -15,15 +19,17 @@ public class GameObject {
 	}
 	
 	void update() {
-		if (movingState.equals("left")) {
-			x--;
 		}
-		if (movingState.equals("right")) {
-			x++;
-		}
-	}
 	
 	void draw(Graphics g) {
-		g.fillRect(10, 10, x, y);
+	}
+	
+	void checkIfChecked(Graphics g) {
+		if (isChecked) {
+			g.setColor(Color.RED);
+			g.fillRect(x, y, width, height);
+			isChecked = false;
+			JOptionPane.showMessageDialog(null, "Hi");
+		}
 	}
 }

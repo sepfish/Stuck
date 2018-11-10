@@ -4,8 +4,8 @@ import javax.swing.JFrame;
 
 public class Stuck {
 	JFrame window;
-	final int width = 1000;
-	final int height = 800;
+	final static int width = 1000;
+	final static int height = 800;
 	GamePanel panel;
 	
 	Stuck() {
