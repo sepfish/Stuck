@@ -8,7 +8,9 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
+/*Hey, where am I now??
+ *11/9: You just implemented "checking" an InteractObject. You were trying to make it turn red when it was checked.
+*/
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer timer;
