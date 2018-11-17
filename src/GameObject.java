@@ -10,6 +10,8 @@ public class GameObject {
 	int height;
 	String movingState = "";
 	Boolean isChecked = false;
+	Boolean isOpen = false;
+	Boolean canClimb = false;
 	
 	GameObject(int x, int y, int width, int height) {
 		this.x = x;
@@ -24,12 +26,4 @@ public class GameObject {
 	void draw(Graphics g) {
 	}
 	
-	void checkIfChecked(Graphics g) {
-		if (isChecked) {
-			g.setColor(Color.RED);
-			g.fillRect(x, y, width, height);
-			isChecked = false;
-			JOptionPane.showMessageDialog(null, "Hi");
-		}
-	}
 }

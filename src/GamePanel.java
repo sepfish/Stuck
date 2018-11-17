@@ -10,6 +10,7 @@ import javax.swing.Timer;
 
 /*Hey, where am I now??
  *11/9: You just implemented "checking" an InteractObject. You were trying to make it turn red when it was checked.
+ *11/16: You have problems with the isChecked setting back to false when it turns true - (try making the INteractObject its own little variable inside of GamePanel, not in the ObjectManager)
 */
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
@@ -21,10 +22,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int end = 3;
 	int currentState = menu;
 	ObjectManager obj;
+	boolean test = false;
 	
 	GamePanel(){
+		chara = new Character(450, 350, 60, 80);
 		timer = new Timer(1000/60, this);
-		chara = new Character(450, 500, 60, 80);
 		obj = new ObjectManager(chara);
 		obj.drawInteractObjects();
 	}
@@ -55,22 +57,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawRoom1State(Graphics g) {
-		chara.setY(500);
 		g.setColor(Color.GRAY);
-		g.fillRect(0, 0, Stuck.width, Stuck.height); 
+		g.fillRect(0, 0, Stuck.width, Stuck.height - 200); 
 		g.setColor(Color.DARK_GRAY);
-		g.fillRect(0, 600, Stuck.width, 200);
+		g.fillRect(0, 400, Stuck.width, 200);
 		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(100, 0, 800, 700);
+		g.fillRect(100, 0, 800, 500);
+		g.setColor(Color.MAGENTA);
+		g.fillRect(100, 400, Stuck.width - 200, 100);
 		obj.drawRoom1(g);
 	}
 	
 	void drawRoom2State(Graphics g) {
-		chara.setY(600);
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, Stuck.width, Stuck.height);   
 		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(100, 100, 800, 700);
+		g.fillRect(100, 100, 800, 500);
+		g.setColor(Color.MAGENTA);
+		g.fillRect(100, 500, Stuck.width - 200, 100);
 		obj.drawRoom2(g);
 	}
 	
@@ -117,6 +121,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if(currentState == 3) {
 				currentState = 1;
+				chara.setY(350);
+			} else 
+			if (currentState == 1) {
+				currentState = 2;
+				chara.setY(450);
 			} else {
 				currentState++;
 			}
@@ -131,10 +140,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			chara.movingState = "right";
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE && obj.isBetween(chara, obj.obj1)) {
-			obj.obj1.isChecked = true;
+			obj.obj1.setIsChecked(true);
+			System.out.println(obj.obj1.isItChecked());
 			obj.update();
 		}
-		
+		if (e.getKeyCode() == KeyEvent.VK_UP  && obj.isBetween(chara, obj.ladderR1)) {
+			chara.movingState = "up";
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN && obj.isBetween(chara, obj.ladderR1)) {
+			chara.movingState = "down";
+		}
 		
 	}
 

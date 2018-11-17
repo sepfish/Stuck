@@ -1,6 +1,7 @@
+/Character.class
 /GameObject.class
 /GamePanel.class
-/Stuck.class
-/Character.class
-/ObjectManager.class
 /InteractObject.class
+/ObjectManager.class
+/Stuck.class
+/Ladder.class

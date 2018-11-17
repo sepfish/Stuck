@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Character extends GameObject{
+	Boolean isClimbing = false;
 
 	Character(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -17,6 +18,16 @@ public class Character extends GameObject{
 		if (movingState.equals("right")) {
 			if (x < 800) {
 				x += 3;
+			}
+		}
+		if (movingState.equals("up")) {
+			if (y > 30) {
+				y -= 3;
+			}
+		}
+		if (movingState.equals("down")) {
+			if (y < 500) {
+				y += 3;
 			}
 		}
 	}
