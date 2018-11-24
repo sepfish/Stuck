@@ -4,7 +4,7 @@ import java.awt.Graphics;
 public class Ladder extends GameObject{
 
 	Ladder(int x, int y, int width, int height) {
-		super(x, y, width, height);
+		super(x, y, width, height, Color.CYAN);
 		// TODO Auto-generated constructor stub
 	}
 	
