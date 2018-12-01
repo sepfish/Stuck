@@ -26,6 +26,7 @@ public class Stuck {
 		window.getContentPane().setPreferredSize(new Dimension(width, height));
         window.pack();
         window.addKeyListener(panel);
+        window.setTitle("STUCK");
         panel.startGame();
 	}
 }

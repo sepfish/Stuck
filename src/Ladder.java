@@ -14,7 +14,7 @@ public class Ladder extends GameObject{
 	
 	void draw(Graphics g) {
 		 g.setColor(Color.CYAN);
-	     g.fillRect(x, y, width, height);
+	     g.fillRect(x, y, width, height); 
 	}
 
 

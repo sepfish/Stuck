@@ -16,6 +16,9 @@ import javax.swing.Timer;
  *		 anyway, you're debating whether to stick all the InteractObjects in an ArrayList
  *		 you should also start thinking about puzzles (finding key fragments (hehe Jevil), batteries for things, notes & passwords, etc)
  *		 you also created an inventory class... but pretty much didn't do anything in it
+ *11/30: You did it. You implemented the ArrayList. You also created your first Inventory mock-up (it looks so bad hahaha)
+ *		 You should start thinking about puzzles!!!! You also need to create more InteractObjects, and maybe get started on the art. 100px by 100px drawings seem pretty good for the inventory.
+ *		 Maybe you should pixellate those Love Nikki home avatars haha
 */
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
@@ -28,14 +31,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	int currentState = menu;
 	ObjectManager obj;
 	boolean test = false;
+	Inventory inv;
 	
 	GamePanel(){
 		chara = new Character(450, 350, 60, 80);
 		timer = new Timer(1000/60, this);
 		obj = new ObjectManager(chara);
-		obj.obj1 = new InteractObject(200, 300, 80, 120);
-		obj.desk = new InteractObject(300, 475, 120, 60);
 		obj.drawInteractObjects();
+		inv = new Inventory();
 	}
 
 	void startGame() {
@@ -144,17 +147,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			chara.movingState = "right";
 		}
-		if (e.getKeyCode() == KeyEvent.VK_SPACE && obj.isBetween(chara, obj.obj1)) {
-			obj.obj1.isChecked = true;
-			obj.update();
-			obj.check(obj.obj1);
-			obj.obj1.isChecked = false;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_SPACE && obj.isBetween(chara, obj.desk)) {
-			obj.desk.isChecked = true;
-			obj.update();
-			obj.check(obj.desk);
-			obj.desk.isChecked = false;
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			for (int i = 0; i < obj.interactObjects.size(); i++) {
+				if (obj.isBetween(chara, obj.interactObjects.get(i))) {
+					obj.interactObjects.get(i).isChecked = true;
+					obj.check(obj.interactObjects.get(i));
+					inv.isItChecked(obj.interactObjects.get(i));
+					obj.update();
+					obj.interactObjects.get(i).isChecked = false;
+				}		
+			}
+			
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP  && obj.isBetween(chara, obj.ladderR1)) {
 			chara.movingState = "up";
@@ -167,6 +170,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_DOWN && obj.isBetween(chara, obj.ladderR1)) {
 			chara.movingState = "down";
 			System.out.println(chara.roomState);
+		}
+		if (e.getKeyCode() == KeyEvent.VK_I) {
+			inv.popUp();
 		}
 		
 	}

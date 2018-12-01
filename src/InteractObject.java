@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 
 public class InteractObject extends GameObject{
 	String objInside;
+	Boolean getObject = false;
 
 	InteractObject(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.BLUE);
