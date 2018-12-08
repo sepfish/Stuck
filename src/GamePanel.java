@@ -4,22 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-/*Hey, where am I now??
- *11/9: You just implemented "checking" an InteractObject. You were trying to make it turn red when it was checked.
- *11/16: You have problems with the isChecked setting back to false when it turns true - (try making the INteractObject its own little variable inside of GamePanel, not in the ObjectManager)
- *11/23: THANK GOD THAT PROBLEM IS SOLVED HHHHHH
- *		 anyway, you're debating whether to stick all the InteractObjects in an ArrayList
- *		 you should also start thinking about puzzles (finding key fragments (hehe Jevil), batteries for things, notes & passwords, etc)
- *		 you also created an inventory class... but pretty much didn't do anything in it
- *11/30: You did it. You implemented the ArrayList. You also created your first Inventory mock-up (it looks so bad hahaha)
- *		 You should start thinking about puzzles!!!! You also need to create more InteractObjects, and maybe get started on the art. 100px by 100px drawings seem pretty good for the inventory.
- *		 Maybe you should pixellate those Love Nikki home avatars haha
-*/
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer timer;
@@ -33,12 +24,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean test = false;
 	Inventory inv;
 	
+	public static BufferedImage titleImg;
+	
 	GamePanel(){
 		chara = new Character(450, 350, 60, 80);
 		timer = new Timer(1000/60, this);
 		obj = new ObjectManager(chara);
 		obj.drawInteractObjects();
 		inv = new Inventory();
+		try {
+			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title test.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void startGame() {
@@ -62,8 +61,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawMenuState(Graphics g) {
-		g.setColor(Color.GREEN);
-		g.fillRect(0, 0, Stuck.width, Stuck.height);    
+		g.drawImage(GamePanel.titleImg, 0, 0, Stuck.width, Stuck.height, null);    
 	}
 	
 	void drawRoom1State(Graphics g) {
@@ -128,15 +126,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			if(currentState == 3) {
-				currentState = 1;
-				chara.roomState = 1;
-				chara.setY(350);
-			} else {
-				currentState++;
-				chara.roomState++;
-			}
+		if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState != menu) {
+			currentState = 3;
 		}
 		if (currentState == menu) {
 			currentState = room1;
@@ -169,12 +160,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN && obj.isBetween(chara, obj.ladderR1)) {
 			chara.movingState = "down";
-			System.out.println(chara.roomState);
+			if (chara.roomState == 1 && chara.justArrived) {
+					chara.setY(60);
+					chara.justArrived = false;
+					currentState = 1;
+			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_I) {
 			inv.popUp();
 		}
-		
 	}
 
 	@Override
