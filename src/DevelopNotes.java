@@ -16,6 +16,10 @@ public class DevelopNotes {
  *		 You need to implement a way to unlock things... (seeing as you have a key and you found out how to lock things now)
  *		 also put some art in bro!!!
  *		 and find some way to unlock the door
+ *12/14: it's taku's birthday
+ *		 You started doing (basic) graphics... do more :)
+ *		 still need to find out how to unlock things
+ *		 also puzzles
 */
 	
 	

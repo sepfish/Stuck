@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	public static BufferedImage titleImg;
 	
+	
 	GamePanel(){
 		chara = new Character(450, 350, 60, 80);
 		timer = new Timer(1000/60, this);
@@ -72,7 +73,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 0, 800, 500);
 		g.setColor(Color.MAGENTA);
-		g.fillRect(100, 400, Stuck.width - 200, 100);
+		g.fillRect(100, 400, 800, 100);
 		obj.drawRoom1(g);
 	}
 	
@@ -82,7 +83,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 100, 800, 500);
 		g.setColor(Color.MAGENTA);
-		g.fillRect(100, 500, Stuck.width - 200, 100);
+		g.fillRect(100, 500, 800, 100);
 		obj.drawRoom2(g);
 	}
 	
@@ -106,6 +107,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	 
 	 @Override
 	 public void actionPerformed(ActionEvent e) {
+		if (chara.roomState == 3) {
+			currentState = end;
+		}
 		if (currentState == menu) {
 			updateMenuState();
 		} else if (currentState == room1) {

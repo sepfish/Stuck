@@ -3,10 +3,15 @@ import java.awt.Graphics;
 
 public class Character extends GameObject{
 	boolean justArrived;
+	boolean hasKey = false;
 
 	Character(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.BLACK);
 		// TODO Auto-generated constructor stub
+	}
+	
+	void setY(int y) {
+		this.y = y;
 	}
 	
 	void update() {
@@ -40,14 +45,6 @@ public class Character extends GameObject{
 				y += 3;
 			}
 		}
-			
-	} 
-	
-	void setY(int y) {
-		this.y = y;
-	}
-	
-	void jump() {
 	}
 	
 	void draw(Graphics g) {
