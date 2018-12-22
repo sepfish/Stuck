@@ -25,16 +25,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Inventory inv;
 	
 	public static BufferedImage titleImg;
+	public static BufferedImage floorImg;
+	public static BufferedImage endImg;
 	
 	
 	GamePanel(){
 		chara = new Character(450, 350, 60, 80);
 		timer = new Timer(1000/60, this);
 		obj = new ObjectManager(chara);
-		obj.drawInteractObjects();
 		inv = new Inventory();
 		try {
 			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title test.jpg"));
+			floorImg = ImageIO.read(this.getClass().getResourceAsStream("floor.jpg"));
+			endImg = ImageIO.read(this.getClass().getResourceAsStream("end.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,8 +75,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.fillRect(0, 400, Stuck.width, 200);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 0, 800, 500);
-		g.setColor(Color.MAGENTA);
-		g.fillRect(100, 400, 800, 100);
+		g.drawImage(GamePanel.floorImg, 100, 400, 800, 100, null);
 		obj.drawRoom1(g);
 	}
 	
@@ -82,14 +84,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.fillRect(0, 0, Stuck.width, Stuck.height);   
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 100, 800, 500);
-		g.setColor(Color.MAGENTA);
-		g.fillRect(100, 500, 800, 100);
+		g.drawImage(GamePanel.floorImg, 100, 500, 800, 100, null);
 		obj.drawRoom2(g);
 	}
 	
 	void drawEndState(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, Stuck.width, Stuck.height);    
+		g.drawImage(GamePanel.endImg, 0, 0, Stuck.width, Stuck.height, null);
 	}
 	
 	 @Override

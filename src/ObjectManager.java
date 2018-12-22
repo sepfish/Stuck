@@ -19,9 +19,6 @@ public class ObjectManager {
 	Ladder ladderR2;
 	ArrayList<InteractObject> interactObjects = new ArrayList<InteractObject>();
 	
-	public static BufferedImage deskImg;
-	public static BufferedImage mirrorImg;
-	
 	ObjectManager(Character c){
 		chara = c;
 		door = new InteractObject(140, 280, 80, 120);
@@ -29,18 +26,13 @@ public class ObjectManager {
 		desk = new InteractObject(300, 465, 120, 60);
 		mirror = new InteractObject(500, 275, 70, 120);
 		chest = new InteractObject(365, 300, 90, 120);
+		ladderR1 = new Ladder(750, 0, 80, 425);
+		ladderR2 = new Ladder(750, 475, 80, 135);
 		interactObjects.add(door);
 		interactObjects.add(desk);
 		interactObjects.add(obj1);
 		interactObjects.add(mirror);
 		interactObjects.add(chest);
-		try {
-			deskImg = ImageIO.read(this.getClass().getResourceAsStream("desk.png"));
-			mirrorImg = ImageIO.read(this.getClass().getResourceAsStream("mirror.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 	
@@ -52,41 +44,33 @@ public class ObjectManager {
 	}
 	
 	void drawRoom1(Graphics g) {
-		drawInteractObjects();
 		ladderR1.draw(g);
 		door.draw(g);
 		door.setColor(Color.YELLOW);
 		door.setName("DOOR");
+		door.setInside("nothing", "door.png", "door.png", false);
 		obj1.draw(g);
 		obj1.setName("CHEST");
 		chest.draw(g);
 		chest.setName("CHEST");
-		chest.setInside("hmm", "test.jpg", false);
+		chest.setInside("hmm", "desk.png", "mirror.png", false);
 		chest.lock();
-		mirror.drawTemp1(g);
+		mirror.drawImg(g);
 		mirror.setName("MIRROR");
-		mirror.setInside("NOTE", "note.jpg", false);
+		mirror.setInside("NOTE", "note.jpg", "mirror.png", false);
 		chara.draw(g);
 	}
 	
 	void drawRoom2(Graphics g) {
 		desk.setName("DESK");
-		drawInteractObjectsR2();
-		desk.drawTemp(g);	
-		desk.setInside("CHEST KEY", "key.png", true);
+		ladderR2.draw(g);
+		desk.drawImg(g);	
+		desk.setInside("CHEST KEY", "key.png", "desk.png", true);
 		ladderR2.draw(g);
 		chara.draw(g);
 	}
 	
-	
-	void drawInteractObjects() {
-		ladderR1 = new Ladder(750, 0, 80, 425);
-	}
-	
-	void drawInteractObjectsR2() {
-		ladderR2 = new Ladder(750, 475, 80, 135);
-	}
-	
+
 	boolean isBetween(Character c, GameObject o) {
 		if (c.x >= o.x && c.x + c.width <= o.x + o.width) {
 			return true;

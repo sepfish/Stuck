@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 public class Character extends GameObject{
 	boolean justArrived;
-	boolean hasKey = false;
+	boolean hasKey = true;
 
 	Character(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.BLACK);
@@ -36,7 +36,7 @@ public class Character extends GameObject{
 			if (roomState == 1) {
 				if (y < 350) {
 					y += 3;
-				} 
+				}
 			}
 			else if (y >= 470) {
 				roomState = 1;

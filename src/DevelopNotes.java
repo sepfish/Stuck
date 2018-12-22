@@ -20,6 +20,10 @@ public class DevelopNotes {
  *		 You started doing (basic) graphics... do more :)
  *		 still need to find out how to unlock things
  *		 also puzzles
+ *12/21: winter break bois
+ *		 You did some more graphics... do more graphics
+ *		 There's a problem with the chest and the mirror on the first floor swapping graphics, for whatever reason.
+ *		 Also work on things mentioned above. Also fix the door graphics.
 */
 	
 	
