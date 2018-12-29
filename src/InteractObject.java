@@ -27,7 +27,7 @@ public class InteractObject extends GameObject{
 	public static BufferedImage objImg;
 	
 	InteractObject(int x, int y, int width, int height) {
-		super(x, y, width, height, Color.BLUE);
+		super(x, y, width, height, Color.GREEN);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -81,10 +81,8 @@ public class InteractObject extends GameObject{
 		}
 	}
 	
-	void setName(String name //, String fileName
-			) {
+	void setName(String name) {
 		this.name = name;
-		//this.fileName = fileName;
 	}
 	
 	void lock() {

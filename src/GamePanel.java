@@ -21,6 +21,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int end = 3;
 	int currentState = menu;
 	ObjectManager obj;
+	Decorator deco;
 	boolean test = false;
 	Inventory inv;
 	
@@ -33,6 +34,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		chara = new Character(450, 350, 60, 80);
 		timer = new Timer(1000/60, this);
 		obj = new ObjectManager(chara);
+		deco = new Decorator();
 		inv = new Inventory();
 		try {
 			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title test.jpg"));
@@ -69,22 +71,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawRoom1State(Graphics g) {
-		g.setColor(Color.GRAY);
+		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, Stuck.width, Stuck.height - 200); 
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 400, Stuck.width, 200);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 0, 800, 500);
 		g.drawImage(GamePanel.floorImg, 100, 400, 800, 100, null);
-		obj.drawRoom1(g);
+		deco.drawR1(g);
+		obj.drawRoom1(g);	
 	}
 	
 	void drawRoom2State(Graphics g) {
-		g.setColor(Color.GRAY);
+		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, Stuck.width, Stuck.height);   
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 100, 800, 500);
 		g.drawImage(GamePanel.floorImg, 100, 500, 800, 100, null);
+		deco.drawR2(g);
 		obj.drawRoom2(g);
 	}
 	

@@ -21,7 +21,7 @@ public class ObjectManager {
 	
 	ObjectManager(Character c){
 		chara = c;
-		door = new InteractObject(140, 280, 80, 120);
+		door = new InteractObject(140, 265, 90, 135);
 		obj1 = new InteractObject(265, 300, 90, 120);
 		desk = new InteractObject(300, 465, 120, 60);
 		mirror = new InteractObject(500, 275, 70, 120);
@@ -33,7 +33,6 @@ public class ObjectManager {
 		interactObjects.add(obj1);
 		interactObjects.add(mirror);
 		interactObjects.add(chest);
-		
 	}
 	
 	void update() {
@@ -45,19 +44,20 @@ public class ObjectManager {
 	
 	void drawRoom1(Graphics g) {
 		ladderR1.draw(g);
-		door.draw(g);
 		door.setColor(Color.YELLOW);
 		door.setName("DOOR");
 		door.setInside("nothing", "door.png", "door.png", false);
-		obj1.draw(g);
+		door.drawImg(g);
 		obj1.setName("CHEST");
-		chest.draw(g);
+		obj1.setInside("nothing", "test.jpg", "", false);
+		obj1.drawImg(g);
 		chest.setName("CHEST");
-		chest.setInside("hmm", "desk.png", "mirror.png", false);
+		chest.setInside("hmm", "test.jpg", "", false);
+		chest.drawImg(g);
 		chest.lock();
-		mirror.drawImg(g);
 		mirror.setName("MIRROR");
-		mirror.setInside("NOTE", "note.jpg", "mirror.png", false);
+		mirror.setInside("NOTE", "note.png", "mirror.png", false);
+		mirror.drawImg(g);
 		chara.draw(g);
 	}
 	
@@ -95,10 +95,10 @@ public class ObjectManager {
 			}
 		} else if (o.objInside != null && o.getObject) {
 			JOptionPane.showMessageDialog(null, "You've already taken the " + o.objInside + ".", "INSIDE", JOptionPane.INFORMATION_MESSAGE);
-		} else if (o.objInside == null){
+		} else if (o.objInside == null || o.objInside == "nothing"){
 			JOptionPane.showMessageDialog(null, "There's nothing inside.", "INSIDE", JOptionPane.INFORMATION_MESSAGE);
 		} 
-		if (o.objInside != null && o.getObject == false && o.locked == false) {
+		else if (o.objInside != null && o.getObject == false && o.locked == false) {
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {
 				o.getObject = true;

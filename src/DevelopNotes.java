@@ -24,12 +24,18 @@ public class DevelopNotes {
  *		 You did some more graphics... do more graphics
  *		 There's a problem with the chest and the mirror on the first floor swapping graphics, for whatever reason.
  *		 Also work on things mentioned above. Also fix the door graphics.
+ *12/28: it's orlando's birthday? ok sure happy birthday orlando
+ *		 Fixed the going down problem. Again.
+ *		 Switched some colors around, introduced character moving states (for future graphics)
+ *		 There's a problem with setting the images for the InteractObjects - they'll only draw the last image that was set, even though each InteractObject should have their own variable?
+ *
 */
 	
 	
 	/*PUZZLES
 	 * - The key to the door is under the door itself, so you have to find some kind of long stick/broom
-	 * - One of the chests is locked. You have to find the key to the chest. Inside the chest is 
+	 * - One of the chests is locked. You have to find the key to the chest. Inside the chest is ...
+	 * -
 	 */
 	
 }
