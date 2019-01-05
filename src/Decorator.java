@@ -14,10 +14,12 @@ public class Decorator {
 	void drawR1(Graphics g) {
 		clock.setInside("nothing", "clock.png", "clock2.png", false);
 		clock.drawImg(g);
+		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", false);
 		bookshelf.drawImg(g);
 	}
 	
 	void drawR2(Graphics g) {
-		lamp.draw(g);
+		lamp.setInside("nothing", "lamp.png", "lamp.png", false);
+		lamp.drawImg(g);
 	}
 }

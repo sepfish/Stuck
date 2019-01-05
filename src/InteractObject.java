@@ -23,6 +23,11 @@ public class InteractObject extends GameObject{
 	Boolean locked = false;
 	Boolean hasKey = false;
 	Boolean isKey = false;
+	/* This is a temporary system right now: 
+	 * The boolean isKey determines whether or not the object inside it will unlock something.
+	 * The boolean hasKey determines whether or not the object inside that unlocks things is in the character's inventory.
+	 * hasKey changes to true when the "key" enters the inventory.
+	 */
 	
 	public static BufferedImage objImg;
 	
@@ -32,7 +37,6 @@ public class InteractObject extends GameObject{
 	}
 	
 	void update() {
-		
 	}
 		
 	void draw(Graphics g) {
@@ -67,7 +71,6 @@ public class InteractObject extends GameObject{
 	
 	void setInside(String s, String fileName, String insideFile, boolean isKey) {
 		this.isKey = isKey;
-		this.hasKey = false;
 		objInside = s;
 		this.insideFile = insideFile;
 		this.fileName = fileName;
@@ -87,12 +90,6 @@ public class InteractObject extends GameObject{
 	
 	void lock() {
 		locked = true;
-	}
-	
-	void unlock(boolean hasKey) {
-		if (hasKey) {
-			locked = false;
-		}
 	}
 	
 	public JLabel createLabelImage(String fileName) throws MalformedURLException {

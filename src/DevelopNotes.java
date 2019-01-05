@@ -28,14 +28,29 @@ public class DevelopNotes {
  *		 Fixed the going down problem. Again.
  *		 Switched some colors around, introduced character moving states (for future graphics)
  *		 There's a problem with setting the images for the InteractObjects - they'll only draw the last image that was set, even though each InteractObject should have their own variable?
- *
+ *1/4:	 happy new year
+ *		 Put in more graphics, spent half of class drawing a bookshelf and a lamp.
+ *		 Plz think of puzzles :(
+ *		 Think about how you're going to populate the second floor
+ *		 Ladders/stairs still need figuring out (how graphics?)
+ *		 Need to implement "walk cycle"/"run cycle" (not just flashing a different color)
+ *		  - I don't think constructing a for loop will work. There needs to be some way that the character can cycle through at least 4 sprites. Either I have to make a gif, or I need to find some other way to do the thing
+ *		 There's also a problem with the InteractObject's hasKey boolean setting back to false :(
+ *		 Should also implement a way to have different flavor text for checking items, rather than just the "There's nothing inside." Like Undertale.
 */
 	
 	
-	/*PUZZLES
+	/*PUZZLES - Please implement the necessary methods for these to work!!!!!!!!!!!!!!!!!!
 	 * - The key to the door is under the door itself, so you have to find some kind of long stick/broom
-	 * - One of the chests is locked. You have to find the key to the chest. Inside the chest is ...
-	 * -
+	 * - There's a note behind the mirror that tells you this.
+	 * - The mirror should have to be checked multiple times to find this (?) 
+	 * - The dialogue for checking the "door" should change to the "what's that under the door" after the player has found the note.
+	 * - One of the chests is locked. You have to find the key to the chest. Inside the chest is glue.
+	 * - The key to that locked chest is inside the desk on the second floor.
+	 * - The player needs to find three small sticks(tm). One is in a hole in the wall. It should be Very Hard to see (?)
+	 * - After the player finds all three of the Small Sticks(tm), the Long Stick(tm) will be created and the player can escape.
+	 * - There should be a small safe somewhere. There should also be a computer somewhere. Booting up the computer will tell the player a small clue about the code to the safe.
+	 * - The safe should have a key for wherever one of the other Small Sticks(tm) are.
 	 */
 	
 }

@@ -40,6 +40,7 @@ public class ObjectManager {
 		desk.update();
 		mirror.update();
 		chara.update();
+		door.update();
 	}
 	
 	void drawRoom1(Graphics g) {
@@ -49,10 +50,10 @@ public class ObjectManager {
 		door.setInside("nothing", "door.png", "door.png", false);
 		door.drawImg(g);
 		obj1.setName("CHEST");
-		obj1.setInside("nothing", "test.jpg", "", false);
+		obj1.setInside("nothing", "clock.png", "", false);
 		obj1.drawImg(g);
 		chest.setName("CHEST");
-		chest.setInside("hmm", "test.jpg", "", false);
+		chest.setInside("hmm", "clock.png", "", false);
 		chest.drawImg(g);
 		chest.lock();
 		mirror.setName("MIRROR");
@@ -64,8 +65,8 @@ public class ObjectManager {
 	void drawRoom2(Graphics g) {
 		desk.setName("DESK");
 		ladderR2.draw(g);
-		desk.drawImg(g);	
 		desk.setInside("CHEST KEY", "key.png", "desk.png", true);
+		desk.drawImg(g);	
 		ladderR2.draw(g);
 		chara.draw(g);
 	}
@@ -78,33 +79,38 @@ public class ObjectManager {
 			return false;
 		}
 	}
-	
+
 	void check(InteractObject o) {
 		if (o.name.equals("DOOR")) {
 			if(chara.hasKey) {
 				JOptionPane.showMessageDialog(null, "You open the DOOR.", "STUCK", JOptionPane.INFORMATION_MESSAGE);
 				chara.roomState = 3;
 			} else {
-				JOptionPane.showMessageDialog(null, "The DOOR is locked.\nYou must find the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "The DOOR is locked.\nYou must find the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "On second thought... what's that under the door?", "STUCK?", JOptionPane.INFORMATION_MESSAGE);
 			}
 		} else if (o.locked) {
+			System.out.println(o.hasKey);
 			if (o.hasKey) {
+				o.locked = false;
+				System.out.println("I unlocked the thing using the key thingy");
 				JOptionPane.showMessageDialog(null, "You unlocked the " + o.name + ".", "UNLOCKED", JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(null, "The " + o.name + " is locked.", "LOCKED", JOptionPane.INFORMATION_MESSAGE);
 			}
-		} else if (o.objInside != null && o.getObject) {
+		} else if (o.objInside != null && o.objInside != "nothing" && o.getObject) {
 			JOptionPane.showMessageDialog(null, "You've already taken the " + o.objInside + ".", "INSIDE", JOptionPane.INFORMATION_MESSAGE);
 		} else if (o.objInside == null || o.objInside == "nothing"){
 			JOptionPane.showMessageDialog(null, "There's nothing inside.", "INSIDE", JOptionPane.INFORMATION_MESSAGE);
 		} 
-		else if (o.objInside != null && o.getObject == false && o.locked == false) {
+		else if (o.objInside != null && o.objInside != "nothing" && o.getObject == false && o.locked == false) {
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {
 				o.getObject = true;
 				if (o.isKey) {
 					o.hasKey = true;
-					o.unlock(o.hasKey);
+					System.out.println("I have the key thingy");
+					System.out.println(o.hasKey);
 				}
 			}
 		}
