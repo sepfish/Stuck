@@ -23,6 +23,7 @@ public class InteractObject extends GameObject{
 	Boolean locked = false;
 	Boolean hasKey = false;
 	Boolean isKey = false;
+	int floorNumber;
 	/* This is a temporary system right now: 
 	 * The boolean isKey determines whether or not the object inside it will unlock something.
 	 * The boolean hasKey determines whether or not the object inside that unlocks things is in the character's inventory.
@@ -69,7 +70,8 @@ public class InteractObject extends GameObject{
 		}
 	}
 	
-	void setInside(String s, String fileName, String insideFile, boolean isKey) {
+	void setInside(String s, String fileName, String insideFile, int floorNum, boolean isKey) {
+		floorNumber = floorNum;
 		this.isKey = isKey;
 		objInside = s;
 		this.insideFile = insideFile;

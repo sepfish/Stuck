@@ -11,15 +11,16 @@ public class Decorator {
 		lamp = new InteractObject(255, 400, 50, 120);
 	}
 	
+	//floor number set to 0 because I don't want them to get checked anyway
 	void drawR1(Graphics g) {
-		clock.setInside("nothing", "clock.png", "clock2.png", false);
+		clock.setInside("nothing", "clock.png", "clock2.png", 0, false);
 		clock.drawImg(g);
-		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", false);
+		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", 0, false);
 		bookshelf.drawImg(g);
 	}
 	
 	void drawR2(Graphics g) {
-		lamp.setInside("nothing", "lamp.png", "lamp.png", false);
+		lamp.setInside("nothing", "lamp.png", "lamp.png", 0, false);
 		lamp.drawImg(g);
 	}
 }

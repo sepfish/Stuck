@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawRoom1State(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, Stuck.width, Stuck.height - 200); 
-		g.setColor(Color.DARK_GRAY);
+		g.setColor(new Color(102, 71, 19));
 		g.fillRect(0, 400, Stuck.width, 200);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 0, 800, 500);
@@ -147,16 +147,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			chara.movingState = "right";
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			boolean tempSolution = false;
 			for (int i = 0; i < obj.interactObjects.size(); i++) {
-				if (obj.isBetween(chara, obj.interactObjects.get(i))) {
+				if (obj.isBetween(chara, obj.interactObjects.get(i)) && obj.interactObjects.get(i).floorNumber == currentState) {
 					obj.interactObjects.get(i).isChecked = true;
 					obj.check(obj.interactObjects.get(i));
 					inv.isItChecked(obj.interactObjects.get(i));
 					obj.update();
 					obj.interactObjects.get(i).isChecked = false;
-				}		
+				}
 			}
-			
+			if (currentState == 2 && 150 <= chara.x && 170 >= chara.x && tempSolution == false) {
+				obj.interactObjects.get(5).isChecked = true;
+				obj.check(obj.interactObjects.get(5));
+				inv.isItChecked(obj.interactObjects.get(5));
+				obj.update();
+				obj.interactObjects.get(5).isChecked = false;
+				tempSolution = true;
+			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP  && obj.isBetween(chara, obj.ladderR1)) {
 			chara.movingState = "up";

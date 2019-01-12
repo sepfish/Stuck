@@ -37,6 +37,11 @@ public class DevelopNotes {
  *		  - I don't think constructing a for loop will work. There needs to be some way that the character can cycle through at least 4 sprites. Either I have to make a gif, or I need to find some other way to do the thing
  *		 There's also a problem with the InteractObject's hasKey boolean setting back to false :(
  *		 Should also implement a way to have different flavor text for checking items, rather than just the "There's nothing inside." Like Undertale.
+ *1/11:	 vespy definitive edition & laguz in heroes!!! having insane luck in heroes after the gigantic gap lol
+ *		 Added a cycle of three different flavor text for checking items with certain conditions.
+ *		 Started implementing things for the puzzles. Fixed the problem where you could check things on the first floor... on the second floor
+ *		 Please fix the rgb values for the floor it's driving me nuts
+ *		 As usual, keep implementing the puzzle stuff also the problem with the locking is Still There(tm)
 */
 	
 	
