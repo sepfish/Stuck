@@ -42,6 +42,13 @@ public class DevelopNotes {
  *		 Started implementing things for the puzzles. Fixed the problem where you could check things on the first floor... on the second floor
  *		 Please fix the rgb values for the floor it's driving me nuts
  *		 As usual, keep implementing the puzzle stuff also the problem with the locking is Still There(tm)
+ *1/14	 it's not friday! it's monday! also I only summoned two reysons :( rip +2 reyson
+ *		 For the walk cycle, I would try first recording exactly when the GamePanel updates.
+ *		 You should also have a method to update the character's sprite (using the g parameter) separate from update I guess, because update doesn't accept g
+ *		 After so-and-so amount of updates, character sprite changes. I'm thinking three
+ *		 Also I think the problem with the key booleans and unlocking is that 1. it's a member variable and 2. it's not a keyEvent so it would be hard to fix like the checking boolean
+ *		 I would try not making it a member variable and instead setting it somewhere... ugh another setter but I think it's the only way
+ *		 Also ya plz fix rgb values omg my eyes
 */
 	
 	
