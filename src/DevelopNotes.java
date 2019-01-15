@@ -49,6 +49,10 @@ public class DevelopNotes {
  *		 Also I think the problem with the key booleans and unlocking is that 1. it's a member variable and 2. it's not a keyEvent so it would be hard to fix like the checking boolean
  *		 I would try not making it a member variable and instead setting it somewhere... ugh another setter but I think it's the only way
  *		 Also ya plz fix rgb values omg my eyes
+ *1/15	still not friday yet, I have the 2nd ap quiz in math and I am going to Die thank god they're curved
+ *		 So I looked at the game design document. You still have to put "obligatory easter eggs" haha. Maybe put a frozen cheese on a table or something.
+ *		 You should also really make an introduction/"how to play" screen (I guess just make another JFrame, press "h" for help)
+ *		 Otherwise you're doing pretty well :)
 */
 	
 	
