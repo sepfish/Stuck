@@ -54,7 +54,8 @@ public class DevelopNotes {
  *		 You should also really make an introduction/"how to play" screen (I guess just make another JFrame, press "h" for help)
  *		 Otherwise you're doing pretty well :)
  *1/18	 alfonse dies in two days
- *		 Implemented help feature, Undertale easter egg
+ *		 Implemented help feature, Undertale easter egg, Ib drawing
+ *		 Work on stuff mentioned above :)
 */
 	
 	
