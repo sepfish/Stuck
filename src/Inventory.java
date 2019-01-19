@@ -10,19 +10,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Inventory {
 	JFrame frame;
+	JFrame hFrame;
 	JPanel panel;
+	JPanel hPanel;
+	JLabel hLabel;
 	boolean added = false;
-	JButton experimental = new JButton();
-	JLabel picture;
 	
 	Inventory(){
 		frame = new JFrame();
 		panel = new JPanel();
-		picture = new JLabel();
 		frame.add(panel);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setTitle("INVENTORY");
@@ -37,5 +38,34 @@ public class Inventory {
 			panel.add(a.invObject);
 			frame.pack();
 		}
+	}
+	
+	void help() {
+		hFrame = new JFrame();
+		hPanel = new JPanel();
+		hFrame.add(hPanel);
+		hFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		hFrame.setTitle("HELP");
+		try {
+			hLabel = createLabelImage("help.png");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		hPanel.add(hLabel);
+		hFrame.pack();
+		JOptionPane.showMessageDialog(null, "You reach into your pocket and draw out a slip of paper.", "HELP", JOptionPane.INFORMATION_MESSAGE);
+		hFrame.setVisible(true);
+	}
+	
+	public JLabel createLabelImage(String fileName) throws MalformedURLException {
+		URL imageURL = getClass().getResource(fileName);
+		if (imageURL == null) {
+			System.err.println("Could not find image " + fileName);
+			return new JLabel();
+		}
+		Icon icon = new ImageIcon(imageURL);
+		JLabel imageLabel = new JLabel(icon);
+		return imageLabel;
 	}
 }

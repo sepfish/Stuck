@@ -185,6 +185,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_I) {
 			inv.popUp();
 		}
+		if (e.getKeyCode() == KeyEvent.VK_H) {
+			inv.help();
+		}
 	}
 
 	@Override

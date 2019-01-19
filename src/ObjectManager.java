@@ -18,6 +18,7 @@ public class ObjectManager {
 	InteractObject mirror;
 	InteractObject chest;
 	InteractObject hole;
+	InteractObject sofa;
 	Ladder ladderR1;
 	Ladder ladderR2;
 	ArrayList<InteractObject> interactObjects = new ArrayList<InteractObject>();
@@ -30,6 +31,7 @@ public class ObjectManager {
 		mirror = new InteractObject(500, 275, 70, 120);
 		chest = new InteractObject(365, 300, 90, 120);
 		hole = new InteractObject(150, 480, 20, 20);
+		sofa = new InteractObject(475, 445, 150, 75);
 		ladderR1 = new Ladder(750, 0, 80, 425);
 		ladderR2 = new Ladder(750, 475, 80, 135);
 		interactObjects.add(door);
@@ -38,6 +40,7 @@ public class ObjectManager {
 		interactObjects.add(mirror);
 		interactObjects.add(chest);
 		interactObjects.add(hole);
+		interactObjects.add(sofa);
 	}
 	
 	void update() {
@@ -75,6 +78,9 @@ public class ObjectManager {
 		hole.setName("HOLE IN THE WALL");
 		hole.setInside("stick (implement later)", "glue.png", "hole.png", 2, false);
 		hole.drawImg(g);
+		sofa.setName("SOFA");
+		sofa.setInside("nothing", "door.png", "", 2, false);
+		sofa.drawImg(g);
 		chara.draw(g);
 	}
 	
@@ -98,6 +104,12 @@ public class ObjectManager {
 					JOptionPane.showMessageDialog(null, "The DOOR is locked.\nYou must find the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE);
 					JOptionPane.showMessageDialog(null, "On second thought... what's that under the door?", "STUCK?", JOptionPane.INFORMATION_MESSAGE);
 			}
+		} else if (o.name.equals("SOFA")) {
+			JOptionPane.showMessageDialog(null, "There's a joke book on the sofa.\nYou decide to look inside the book.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Inside the joke book, there's a quantum physics book.\nYou open it.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Inside the quantum physics book, there's another joke book.\nYou open it.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Inside the joke book, there's another quantum physics book...", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "You decide to stop.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
 		} else if (o.locked) {
 			System.out.println(o.hasKey);
 			if (o.hasKey) {
