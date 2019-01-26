@@ -56,6 +56,14 @@ public class DevelopNotes {
  *1/18	 alfonse dies in two days
  *		 Implemented help feature, Undertale easter egg, Ib drawing
  *		 Work on stuff mentioned above :)
+ *1/25	 finals are finally EFFING over oh my god. cyl3 midterms are out and they Do Not Look Good. Fairy's Requiem (torays) came out today and ix looks so cute in his new outfit!!!! also NO SCHOOL HAHAHAHA
+ *		 A8ridged the Undertale easter egg. Actually put up the I8 drawing.
+ *		 Put some kind of Homestuck reference in here. 8lease!!!!!!!!
+ *		 Put the computer and safe in the game. The computer now changes color when checked. Need to implement this on other devices.
+ *		 Please draw the chest. It's 8een green for so long.
+ *		 Implement some kind of Small Stick.
+ *		 Also there's a lagging problem, don't use the computer that you used last time. (The one closest to the door.) Also the frickin chicken chest doesn't want tO UNLOCK
+ *		 Good luck on your presentation next time I guess haha
 */
 	
 	
@@ -70,6 +78,13 @@ public class DevelopNotes {
 	 * - After the player finds all three of the Small Sticks(tm), the Long Stick(tm) will be created and the player can escape.
 	 * - There should be a small safe somewhere. There should also be a computer somewhere. Booting up the computer will tell the player a small clue about the code to the safe.
 	 * - The safe should have a key for wherever one of the other Small Sticks(tm) are.
+	 */
+	
+	/*SMALL STICK IDEAS
+	 * - Pencil
+	 * - Pipe
+	 * - An actual stick
+	 * - Wire
 	 */
 	
 }

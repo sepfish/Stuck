@@ -19,13 +19,13 @@ public class Character extends GameObject{
 		if (movingState.equals("left")) {
 			charaState = "walkLeft";
 			if (x > 150) {
-				x -= 3;
+				x -= 4;
 			}
 		}
 		if (movingState.equals("right")) {
 			charaState = "walkRight";
 			if (x < 800) {
-				x += 3;
+				x += 4;
 			}
 		}
 		if (movingState.equals("up")) {
@@ -33,13 +33,13 @@ public class Character extends GameObject{
 			if (y < 50) {
 				roomState = 2;
 			} else if (y > 0) {
-				y -= 3;
+				y -= 4;
 			}
 		}
 		if (movingState.equals("down")) {
 			charaState = "climbDown";
 			if (y < 350) {
-				y += 3;
+				y += 4;
 			} else if (y >= 350) {
 				if (roomState == 2) {
 					roomState = 1;

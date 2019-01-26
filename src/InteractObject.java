@@ -31,6 +31,7 @@ public class InteractObject extends GameObject{
 	 */
 	
 	public static BufferedImage objImg;
+	public static BufferedImage objImgCheck;
 	
 	InteractObject(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.GREEN);
@@ -54,6 +55,16 @@ public class InteractObject extends GameObject{
 		}
 	}
 	
+	void drawImgTemp(Graphics g) {
+		if (objImg != null && isChecked == false) {
+			g.drawImage(objImg, x, y, width, height, null);
+		} else if (objImg != null && isChecked && objImgCheck != null) {
+			g.drawImage(objImgCheck, x, y, width, height, null);
+		} else {
+			draw(g);
+		}
+	}
+	
 	Color getColor() {
 		if (isChecked) {
 			return Color.RED;
@@ -70,7 +81,7 @@ public class InteractObject extends GameObject{
 		}
 	}
 	
-	void setInside(String s, String fileName, String insideFile, int floorNum, boolean isKey) {
+	void setInside(String s, String fileName, String insideFile, String checkFile, int floorNum, boolean isKey) {
 		floorNumber = floorNum;
 		this.isKey = isKey;
 		objInside = s;
@@ -80,6 +91,7 @@ public class InteractObject extends GameObject{
 			invObject = createLabelImage(fileName);
 			invObject.setToolTipText(objInside);
 			this.objImg = ImageIO.read(this.getClass().getResourceAsStream(insideFile));
+			this.objImgCheck = ImageIO.read(this.getClass().getResourceAsStream(checkFile));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
