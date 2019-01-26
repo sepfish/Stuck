@@ -57,6 +57,7 @@ public class DevelopNotes {
  *		 Implemented help feature, Undertale easter egg, Ib drawing
  *		 Work on stuff mentioned above :)
  *1/25	 finals are finally EFFING over oh my god. cyl3 midterms are out and they Do Not Look Good. Fairy's Requiem (torays) came out today and ix looks so cute in his new outfit!!!! also NO SCHOOL HAHAHAHA
+ *		 also I summoned nailah yesterday :)
  *		 A8ridged the Undertale easter egg. Actually put up the I8 drawing.
  *		 Put some kind of Homestuck reference in here. 8lease!!!!!!!!
  *		 Put the computer and safe in the game. The computer now changes color when checked. Need to implement this on other devices.
@@ -64,6 +65,8 @@ public class DevelopNotes {
  *		 Implement some kind of Small Stick.
  *		 Also there's a lagging problem, don't use the computer that you used last time. (The one closest to the door.) Also the frickin chicken chest doesn't want tO UNLOCK
  *		 Good luck on your presentation next time I guess haha
+ *		 Apparently checking things multiple times adds multiple things to your inventory :(. Fix this!
+ *		 Also add some kind of shrimp thing to your code, I guess.
 */
 	
 	
