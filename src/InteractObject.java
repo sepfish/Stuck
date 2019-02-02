@@ -30,8 +30,8 @@ public class InteractObject extends GameObject{
 	 * hasKey changes to true when the "key" enters the inventory.
 	 */
 	
-	public static BufferedImage objImg;
-	public static BufferedImage objImgCheck;
+	public BufferedImage objImg;
+	public BufferedImage objImgCheck;
 	
 	InteractObject(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.GREEN);

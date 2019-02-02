@@ -67,6 +67,9 @@ public class DevelopNotes {
  *		 Good luck on your presentation next time I guess haha
  *		 Apparently checking things multiple times adds multiple things to your inventory :(. Fix this!
  *		 Also add some kind of shrimp thing to your code, I guess.
+ *2/1	 mmm cyl3 results mmm piranha plant mmm 7th camilla mmm new semester
+ *		 in h0n0r 0f me reading h0mestuck i'll probably write these in quirk style because 1) why n0t and 2) i'll regret it later but it'll be fun n0w
+ *		 lag problem is finally fixed!!!
 */
 	
 	

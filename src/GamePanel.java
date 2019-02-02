@@ -79,7 +79,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.fillRect(100, 0, 800, 500);
 		g.drawImage(GamePanel.floorImg, 100, 400, 800, 100, null);
 		deco.drawR1(g);
-		obj.drawRoom1(g);	
+		obj.drawRoom1(g);
 	}
 	
 	void drawRoom2State(Graphics g) {

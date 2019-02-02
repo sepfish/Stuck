@@ -31,6 +31,7 @@ public class ObjectManager {
 	
 	ObjectManager(Character c){
 		chara = c;
+		//initialize interactObjects
 		door = new InteractObject(140, 265, 90, 135);
 		obj1 = new InteractObject(265, 300, 90, 120);
 		desk = new InteractObject(300, 465, 120, 60);
@@ -42,6 +43,7 @@ public class ObjectManager {
 		safe = new InteractObject(600, 320, 90, 100);
 		ladderR1 = new Ladder(750, 0, 80, 425);
 		ladderR2 = new Ladder(750, 475, 80, 135);
+		//add them to the arrayList
 		interactObjects.add(door);
 		interactObjects.add(desk);
 		interactObjects.add(obj1);
@@ -51,6 +53,17 @@ public class ObjectManager {
 		interactObjects.add(sofa);
 		interactObjects.add(computer);
 		interactObjects.add(safe);
+		//draw the images for the interactObjects
+		door.setInside("nothing", "door.png", "door.png", "", 1, false);
+		obj1.setInside("nothing", "clock.png", "", "", 1, false);
+		chest.setInside("GLUE BOTTLE", "glue.png", "", "", 1, false);
+		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
+		safe.setInside("OTHER KEY", "key2.png", "", "", 1, false);
+		
+		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
+		hole.setInside("stick (implement later)", "glue.png", "hole.png", "", 2, false);
+		sofa.setInside("nothing", "door.png", "", "", 2, false);
+		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
 	}
 	
 	void update() {
@@ -65,20 +78,15 @@ public class ObjectManager {
 		ladderR1.draw(g);
 		door.setColor(Color.YELLOW);
 		door.setName("DOOR");
-		door.setInside("nothing", "door.png", "door.png", "", 1, false);
 		door.drawImg(g);
 		obj1.setName("CHEST");
-		obj1.setInside("nothing", "clock.png", "", "", 1, false);
 		obj1.drawImg(g);
 		chest.setName("CHEST");
-		chest.setInside("GLUE BOTTLE", "glue.png", "", "", 1, false);
 		chest.drawImg(g);
 		chest.lock();
 		mirror.setName("MIRROR");
-		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
 		mirror.drawImg(g);
 		safe.setName("SAFE");
-		safe.setInside("OTHER KEY", "key2.png", "", "", 1, false);
 		safe.drawImg(g);
 		chara.draw(g);
 	}
@@ -86,16 +94,16 @@ public class ObjectManager {
 	void drawRoom2(Graphics g) {
 		desk.setName("DESK");
 		ladderR2.draw(g);
-		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
+		
 		desk.drawImg(g);	
 		hole.setName("HOLE IN THE WALL");
-		hole.setInside("stick (implement later)", "glue.png", "hole.png", "", 2, false);
+		
 		hole.drawImg(g);
 		sofa.setName("SOFA");
-		sofa.setInside("nothing", "door.png", "", "", 2, false);
+		
 		sofa.drawImg(g);
 		computer.setName("COMPUTER");
-		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
+		
 		computer.drawImgTemp(g);
 		chara.draw(g);
 	}
