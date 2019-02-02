@@ -69,9 +69,33 @@ public class DevelopNotes {
  *		 Also add some kind of shrimp thing to your code, I guess.
  *2/1	 mmm cyl3 results mmm piranha plant mmm 7th camilla mmm new semester
  *		 in h0n0r 0f me reading h0mestuck i'll probably write these in quirk style because 1) why n0t and 2) i'll regret it later but it'll be fun n0w
- *		 lag problem is finally fixed!!!
+ *		 the real questi0n is... h0w d0 i write in terezi's quirk
+ *		 anyway, lag pr0blem is finally fixed!!! yay
+ *		 start thinking ab0ut putting in s0und, als0 need t0 update fl00r because the rgb difference is driving me insane
+ *		 the key pr0blem is finally fixed!!! except now the chest d0esn't want t0 check. :(
+ *		 keep w0rking 0n the 0ther stuff menti0ned ab0ve, etc etc. als0 walk cycle!!! start w0rking 0n that
+ *		 als0 uh. y0u can't check multiple times
+ *		 
 */
 	
+	/*GRAPHICS THAT NEED TO BE UPDATED
+	 * - floor
+	 * - desk
+	 * - door
+	 * - safe
+	 * - sofa
+	 * - stick (implement later) stick
+	 * - title screen
+	 * - character
+	 */
+	
+	/*SOUNDS TO PUT IN THE GAME
+	 * - opening various things
+	 * - computer noises
+	 * - some annoying music in the background
+	 * - don't put title music. that sucks
+	 * - ending music?
+	 */
 	
 	/*PUZZLES - Please implement the necessary methods for these to work!!!!!!!!!!!!!!!!!!
 	 * - The key to the door is under the door itself, so you have to find some kind of long stick/broom
@@ -85,6 +109,8 @@ public class DevelopNotes {
 	 * - There should be a small safe somewhere. There should also be a computer somewhere. Booting up the computer will tell the player a small clue about the code to the safe.
 	 * - The safe should have a key for wherever one of the other Small Sticks(tm) are.
 	 */
+	
+	//PSA: RGB value for the floor is #422d10. 
 	
 	/*SMALL STICK IDEAS
 	 * - Pencil

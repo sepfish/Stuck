@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawRoom1State(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, Stuck.width, Stuck.height - 200); 
-		g.setColor(new Color(102, 71, 19));
+		g.setColor(new Color(66, 45, 16));
 		g.fillRect(0, 400, Stuck.width, 200);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 0, 800, 500);

@@ -21,7 +21,7 @@ public class InteractObject extends GameObject{
 	JLabel invObject;
 	Boolean getObject = false;
 	Boolean locked = false;
-	Boolean hasKey = false;
+	static Boolean hasKey = false;
 	Boolean isKey = false;
 	int floorNumber;
 	/* This is a temporary system right now: 

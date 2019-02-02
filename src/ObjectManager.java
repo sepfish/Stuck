@@ -41,9 +41,10 @@ public class ObjectManager {
 		sofa = new InteractObject(475, 445, 150, 75);
 		computer = new InteractObject(335, 415, 70, 50);
 		safe = new InteractObject(600, 320, 90, 100);
+		//initialize ladders
 		ladderR1 = new Ladder(750, 0, 80, 425);
-		ladderR2 = new Ladder(750, 475, 80, 135);
-		//add them to the arrayList
+		ladderR2 = new Ladder(750, 500, 80, 100);
+		//add interactObjects to the interactObject arrayList
 		interactObjects.add(door);
 		interactObjects.add(desk);
 		interactObjects.add(obj1);
@@ -54,16 +55,18 @@ public class ObjectManager {
 		interactObjects.add(computer);
 		interactObjects.add(safe);
 		//draw the images for the interactObjects
+		//(room 1)
 		door.setInside("nothing", "door.png", "door.png", "", 1, false);
-		obj1.setInside("nothing", "clock.png", "", "", 1, false);
-		chest.setInside("GLUE BOTTLE", "glue.png", "", "", 1, false);
+		obj1.setInside("nothing", "clock.png", "chesttest.png", "", 1, false);
+		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "", 1, false);
 		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
 		safe.setInside("OTHER KEY", "key2.png", "", "", 1, false);
-		
+		//(room 2)
 		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
 		hole.setInside("stick (implement later)", "glue.png", "hole.png", "", 2, false);
 		sofa.setInside("nothing", "door.png", "", "", 2, false);
 		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
+		ladderR2.setImg("stairstest.png");
 	}
 	
 	void update() {
@@ -93,7 +96,7 @@ public class ObjectManager {
 	
 	void drawRoom2(Graphics g) {
 		desk.setName("DESK");
-		ladderR2.draw(g);
+		ladderR2.drawImg(g);
 		
 		desk.drawImg(g);	
 		hole.setName("HOLE IN THE WALL");
@@ -158,6 +161,7 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "Inside is a small KEY.", "SAFE", JOptionPane.INFORMATION_MESSAGE);
 				safeUnlocked = true;
 				getObjectMethodNoKey(o);
+				System.out.println("hmm");
 			} else if (safeUnlocked == true){
 				JOptionPane.showMessageDialog(null, "You look inside the safe again.", "SAFE", JOptionPane.INFORMATION_MESSAGE);
 				getObjectMethodNoKey(o);
@@ -166,11 +170,10 @@ public class ObjectManager {
 			}
 		//LOCKED
 		} else if (o.locked) {
-			System.out.println(o.hasKey);
 			if (o.hasKey) {
 				o.locked = false;
-				System.out.println("I unlocked the thing using the key thingy");
 				JOptionPane.showMessageDialog(null, "You unlocked the " + o.name + ".", "UNLOCKED", JOptionPane.INFORMATION_MESSAGE);
+				getObjectMethodNoKey(o);
 			} else {
 				if (rand == 0) {
 					JOptionPane.showMessageDialog(null, "The " + o.name + " is locked.", "LOCKED", JOptionPane.INFORMATION_MESSAGE);
@@ -205,14 +208,13 @@ public class ObjectManager {
 				o.getObject = true;
 				if (o.isKey) {
 					o.hasKey = true;
-					System.out.println("I have the key thingy");
-					System.out.println(o.hasKey);
 				}
 			}
 		}
 	}
 	
 	void getObjectMethodNoKey(InteractObject o) {
+		System.out.println("hmm");
 		random = new Random();
 		int rand = random.nextInt(3);
 		if (o.objInside != null && o.objInside != "nothing" && o.getObject == false && o.locked == false) {
