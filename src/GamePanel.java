@@ -37,8 +37,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		deco = new Decorator();
 		inv = new Inventory();
 		try {
-			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title test.jpg"));
-			floorImg = ImageIO.read(this.getClass().getResourceAsStream("floor.jpg"));
+			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title.jpg"));
+			floorImg = ImageIO.read(this.getClass().getResourceAsStream("floorhmm.png"));
 			endImg = ImageIO.read(this.getClass().getResourceAsStream("end.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawRoom1State(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, Stuck.width, Stuck.height - 200); 
-		g.setColor(new Color(66, 45, 16));
+		g.setColor(new Color(59, 40, 14));
 		g.fillRect(0, 400, Stuck.width, 200);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 0, 800, 500);

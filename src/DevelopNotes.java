@@ -75,26 +75,31 @@ public class DevelopNotes {
  *		 the key pr0blem is finally fixed!!! except now the chest d0esn't want t0 check. :(
  *		 keep w0rking 0n the 0ther stuff menti0ned ab0ve, etc etc. als0 walk cycle!!! start w0rking 0n that
  *		 als0 uh. y0u can't check multiple times
- *		 
+ *2/8	 I forgot all the other quirks :) also uh feh 2nd anniversary week!
+ *		 made a MUCH BETTER title screen
+ *		 also the gigantic locking problem is ALSO FINISHED!! 
+ *		 also the painting moved... a little bit
+ *		 I made the "floorhmm.png" file. It's pretty... hmm. Crop it maybe
+ *		 start investigating sound, walk cycles, and putting a more efficient safe/computer puzzle in.
+ *		  
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
-	 * - floor
+	 * - floor (still)
 	 * - desk
 	 * - door
 	 * - safe
 	 * - sofa
 	 * - stick (implement later) stick
-	 * - title screen
 	 * - character
 	 */
 	
 	/*SOUNDS TO PUT IN THE GAME
-	 * - opening various things
-	 * - computer noises
-	 * - some annoying music in the background
+	 * - opening various things (separate opening/closing door sound)
+	 * - computer noises (some weird stereotypical computer beep beep noise)
+	 * - some annoying music in the background 
 	 * - don't put title music. that sucks
-	 * - ending music?
+	 * - ending music? (like that music that plays when you beat "there is no game")
 	 */
 	
 	/*PUZZLES - Please implement the necessary methods for these to work!!!!!!!!!!!!!!!!!!
@@ -110,7 +115,7 @@ public class DevelopNotes {
 	 * - The safe should have a key for wherever one of the other Small Sticks(tm) are.
 	 */
 	
-	//PSA: RGB value for the floor is #422d10. 
+	//PSA: RGB value for the floor is #422d10. Darker color is #3b280e.
 	
 	/*SMALL STICK IDEAS
 	 * - Pencil

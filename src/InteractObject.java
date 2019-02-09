@@ -19,10 +19,10 @@ public class InteractObject extends GameObject{
 	String insideFile;
 	String fileName;
 	JLabel invObject;
-	Boolean getObject = false;
-	Boolean locked = false;
-	static Boolean hasKey = false;
-	Boolean isKey = false;
+	boolean getObject = false;
+	boolean locked = false;
+	static boolean hasKey = false;
+	boolean isKey = false;
 	int floorNumber;
 	/* This is a temporary system right now: 
 	 * The boolean isKey determines whether or not the object inside it will unlock something.
@@ -104,6 +104,10 @@ public class InteractObject extends GameObject{
 	
 	void lock() {
 		locked = true;
+	}
+	
+	void unlock() {
+		locked = false;
 	}
 	
 	public JLabel createLabelImage(String fileName) throws MalformedURLException {

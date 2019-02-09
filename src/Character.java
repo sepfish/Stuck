@@ -18,8 +18,8 @@ public class Character extends GameObject{
 	void update() {
 		if (movingState.equals("left")) {
 			charaState = "walkLeft";
-			if (x > 150) {
-				x -= 4;
+			if (x > 150 && y >= 350) {
+					x -= 4;
 			}
 		}
 		if (movingState.equals("right")) {

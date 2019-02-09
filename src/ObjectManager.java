@@ -57,8 +57,9 @@ public class ObjectManager {
 		//draw the images for the interactObjects
 		//(room 1)
 		door.setInside("nothing", "door.png", "door.png", "", 1, false);
-		obj1.setInside("nothing", "clock.png", "chesttest.png", "", 1, false);
+		obj1.setInside("hmm", "clock.png", "chesttest.png", "", 1, false);
 		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "", 1, false);
+		chest.lock();
 		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
 		safe.setInside("OTHER KEY", "key2.png", "", "", 1, false);
 		//(room 2)
@@ -86,7 +87,6 @@ public class ObjectManager {
 		obj1.drawImg(g);
 		chest.setName("CHEST");
 		chest.drawImg(g);
-		chest.lock();
 		mirror.setName("MIRROR");
 		mirror.drawImg(g);
 		safe.setName("SAFE");
@@ -141,20 +141,20 @@ public class ObjectManager {
 		} else if (o.name.equals("COMPUTER")) {
 			String passwordQ = JOptionPane.showInputDialog(null, "ENTER PASSWORD:", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 					//JOptionPane.showInputDialog("ENTER PASSWORD:");
-			if (passwordQ.equalsIgnoreCase(password) && computerUnlocked == false) {
+			if (passwordQ.equalsIgnoreCase(password) && !computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You unlocked the COMPUTER.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 				JOptionPane.showMessageDialog(null, "There's a message addressed to you.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 				JOptionPane.showMessageDialog(null, "'hey __________! the password to the safe is 1061. the ___________ key's in there.'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 				computerUnlocked = true;
 				JOptionPane.showMessageDialog(null, "'you don't need to enter the password to the computer again, by the way. just press enter or something. good luck!'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
-			} else if (computerUnlocked == true) {
+			} else if (computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You look at the message on the computer again.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 				JOptionPane.showMessageDialog(null, "'hey __________! the password to the safe is 1061. there's a key in there.'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(null, "That's the wrong PASSWORD.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 			}
 		//SAFE
-		} else if (o.name.equals("SAFE") && safeUnlocked == false) {
+		} else if (o.name.equals("SAFE") && !safeUnlocked) {
 			String combinationQ = JOptionPane.showInputDialog(null, "ENTER COMBINATION:", "SAFE", JOptionPane.INFORMATION_MESSAGE);
 			if (combinationQ.equals(combination)) {
 				JOptionPane.showMessageDialog(null, "You hear a click and the door opens slightly.", "SAFE", JOptionPane.INFORMATION_MESSAGE);
@@ -162,7 +162,7 @@ public class ObjectManager {
 				safeUnlocked = true;
 				getObjectMethodNoKey(o);
 				System.out.println("hmm");
-			} else if (safeUnlocked == true){
+			} else if (safeUnlocked){
 				JOptionPane.showMessageDialog(null, "You look inside the safe again.", "SAFE", JOptionPane.INFORMATION_MESSAGE);
 				getObjectMethodNoKey(o);
 			} else {
@@ -171,7 +171,7 @@ public class ObjectManager {
 		//LOCKED
 		} else if (o.locked) {
 			if (o.hasKey) {
-				o.locked = false;
+				o.unlock();
 				JOptionPane.showMessageDialog(null, "You unlocked the " + o.name + ".", "UNLOCKED", JOptionPane.INFORMATION_MESSAGE);
 				getObjectMethodNoKey(o);
 			} else {
@@ -202,7 +202,7 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "The " + o.name + " contains nothing inside.", "INSIDE", JOptionPane.INFORMATION_MESSAGE);
 			}
 		//NORMAL CHECKING
-		} else if (o.objInside != null && o.objInside != "nothing" && o.getObject == false && o.locked == false) {
+		} else if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked) {
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {
 				o.getObject = true;
@@ -214,10 +214,9 @@ public class ObjectManager {
 	}
 	
 	void getObjectMethodNoKey(InteractObject o) {
-		System.out.println("hmm");
 		random = new Random();
 		int rand = random.nextInt(3);
-		if (o.objInside != null && o.objInside != "nothing" && o.getObject == false && o.locked == false) {
+		if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked) {
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, null, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {
 				o.getObject = true;

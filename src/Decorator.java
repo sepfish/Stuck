@@ -10,7 +10,7 @@ public class Decorator {
 		clock = new InteractObject(360, 175, 50, 50);
 		bookshelf = new InteractObject(135, 200, 100, 40);
 		lamp = new InteractObject(255, 400, 50, 120);
-		painting = new InteractObject(335, 305, 75, 100);
+		painting = new InteractObject(415, 305, 75, 100);
 		
 		clock.setInside("nothing", "clock.png", "clock2.png", "", 0, false);
 		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", "", 0, false);
