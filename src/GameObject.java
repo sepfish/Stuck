@@ -9,7 +9,7 @@ public class GameObject {
 	int width;
 	int height;
 	String movingState = "";
-	int roomState = 0;
+	int roomState = 1;
 	Boolean isChecked = false;
 	Color color;
 	

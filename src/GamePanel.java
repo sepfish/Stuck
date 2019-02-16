@@ -19,6 +19,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int room1 = 1;
 	final int room2 = 2;
 	final int end = 3;
+	final int transition = 4;
 	int currentState = menu;
 	ObjectManager obj;
 	Decorator deco;
@@ -28,6 +29,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public static BufferedImage titleImg;
 	public static BufferedImage floorImg;
 	public static BufferedImage endImg;
+	public static BufferedImage skyR1;
 	
 	
 	GamePanel(){
@@ -38,8 +40,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		inv = new Inventory();
 		try {
 			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title.jpg"));
-			floorImg = ImageIO.read(this.getClass().getResourceAsStream("floorhmm.png"));
+			floorImg = ImageIO.read(this.getClass().getResourceAsStream("floor.jpg"));
 			endImg = ImageIO.read(this.getClass().getResourceAsStream("end.jpg"));
+			skyR1 = ImageIO.read(this.getClass().getResourceAsStream("sky1.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,8 +74,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawRoom1State(Graphics g) {
-		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, Stuck.width, Stuck.height - 200); 
+		g.drawImage(GamePanel.skyR1, 0, 0, Stuck.width, Stuck.height - 200, null);  
 		g.setColor(new Color(59, 40, 14));
 		g.fillRect(0, 400, Stuck.width, 200);
 		g.setColor(Color.LIGHT_GRAY);
@@ -83,7 +85,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawRoom2State(Graphics g) {
-		g.setColor(Color.BLUE);
+		g.setColor(new Color(147, 179, 175));
 		g.fillRect(0, 0, Stuck.width, Stuck.height);   
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(100, 100, 800, 500);
@@ -95,6 +97,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawEndState(Graphics g) {
 		g.drawImage(GamePanel.endImg, 0, 0, Stuck.width, Stuck.height, null);
 	}
+	
+
 	
 	 @Override
 	 public void paintComponent(Graphics g){
@@ -135,7 +139,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState != menu) {
-			currentState = 3;
+			currentState = end;
 		}
 		if (currentState == menu) {
 			currentState = room1;

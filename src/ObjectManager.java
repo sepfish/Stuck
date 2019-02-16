@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,6 +15,9 @@ public class ObjectManager {
 	String combination = "1061";
 	boolean computerUnlocked = false;
 	boolean safeUnlocked = false;
+	boolean mirrorCheckQ = false;
+	int mirrorCheck = 0;
+	int doorCheck = 0;
 	Random random;
 	Character chara;
 	InteractObject obj1;
@@ -129,14 +133,36 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "You open the DOOR.", "", JOptionPane.INFORMATION_MESSAGE);
 				chara.roomState = 3;
 			} else {
+				if (mirrorCheck == 0) {
 					JOptionPane.showMessageDialog(null, "The DOOR is locked.\nYou must find the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE);
-					JOptionPane.showMessageDialog(null, "On second thought... what's that under the door?", "STUCK?", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					if (doorCheck == 0) {
+						JOptionPane.showMessageDialog(null, "The DOOR is locked.\nYou must find the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "You crouch down...\nThere's something under the door.", "STUCK?", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "It's the KEY. You try reaching for it, but your arm's not long enough.", "FOUND THE KEY", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Maybe you could find or make something that could help you reach it.", "FOUND THE KEY", JOptionPane.INFORMATION_MESSAGE);
+						doorCheck++;
+					} else {
+						JOptionPane.showMessageDialog(null, "You need to find or make something to help you get the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+					
 			}
 		//SOFA
 		} else if (o.name.equals("SOFA")) {
 			JOptionPane.showMessageDialog(null, "There's a joke book on the sofa.\nYou decide to look inside the book.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
 			JOptionPane.showMessageDialog(null, "Inside the joke book, there's a quantum physics book.\nYou open it.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
 			JOptionPane.showMessageDialog(null, "Inside the quantum physics book, there's another joke book.\nYou feel a strange sense of deja vu.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+		//MIRROR
+		} else if (o.name.equals("MIRROR")) {
+			if (mirrorCheck == 0) {
+				JOptionPane.showMessageDialog(null, "It's a mirror. You admire yourself in it.", "MIRROR", JOptionPane.INFORMATION_MESSAGE);
+				mirrorCheck++;
+			} else {
+				JOptionPane.showMessageDialog(null, "You notice something inside the frame of the mirror.", "MIRROR", JOptionPane.INFORMATION_MESSAGE);
+				getObjectMethodNoKey(o);
+			}
+			
 		//COMPUTER
 		} else if (o.name.equals("COMPUTER")) {
 			String passwordQ = JOptionPane.showInputDialog(null, "ENTER PASSWORD:", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);

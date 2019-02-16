@@ -81,11 +81,17 @@ public class DevelopNotes {
  *		 also the painting moved... a little bit
  *		 I made the "floorhmm.png" file. It's pretty... hmm. Crop it maybe
  *		 start investigating sound, walk cycles, and putting a more efficient safe/computer puzzle in.
- *		  
+ *2/15	 nintendo direct was the day before yesterday... three houses is a big oof. doesn't even look like a fe game except for purple smoky byleth at the end. it looks like persona???
+ *		 also uh find and vote heroes was a big flop. winners are h!myrrh, lazura, l!lyn, and duma. I'm 99% sure I'm either getting lazura or l!lyn
+ *		 implemented walk cycle!! now I just have to, uh, actually make them
+ *		 added the song class in order to play music and stuff
+ *		 I added an actual sky... but idk if I like it. also I fixed the floor? I guess it's fine? Idk still looks kinda weird
+ *		 Update graphics... maybe do this at home or something where I don't have to mouse draw anything. Find templates for sprites bc I can't draw sprites to save my life
+ *		 Start trying to put sounds!!
+ *		 Added a bit of the puzzle portion. Check the mirror!
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
-	 * - floor (still)
 	 * - desk
 	 * - door
 	 * - safe
@@ -116,6 +122,14 @@ public class DevelopNotes {
 	 */
 	
 	//PSA: RGB value for the floor is #422d10. Darker color is #3b280e.
+	//HEY IDEA: transition screens (black screens? or that weird slidey transition black screen? that one I doubt)
+	
+	//sky rgbs hmm
+	/* - #bae2e8
+	 * - #c1e4eb
+	 * - #b1dce3
+	 * - #a2d4db
+	 */
 	
 	/*SMALL STICK IDEAS
 	 * - Pencil

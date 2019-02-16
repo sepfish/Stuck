@@ -4,7 +4,7 @@ import java.awt.Graphics;
 public class Character extends GameObject{
 	boolean justArrived;
 	boolean hasKey = false;
-	String charaState = "stand";
+	int walkCount = 0;
 
 	Character(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.BLACK);
@@ -17,52 +17,86 @@ public class Character extends GameObject{
 	
 	void update() {
 		if (movingState.equals("left")) {
-			charaState = "walkLeft";
 			if (x > 150 && y >= 350) {
-					x -= 4;
+				x -= 3;
+				walkCount++;
 			}
 		}
 		if (movingState.equals("right")) {
-			charaState = "walkRight";
 			if (x < 800) {
-				x += 4;
+				if (roomState == 1 && y == 350) {
+					x += 3;
+				} else if (roomState == 2) {
+					x += 3;
+				}
+				walkCount++;
 			}
 		}
 		if (movingState.equals("up")) {
-			charaState = "climbUp";
-			if (y < 50) {
+			if (y < 25) {
 				roomState = 2;
 			} else if (y > 0) {
-				y -= 4;
+				y -= 3;
 			}
+			walkCount++;
 		}
 		if (movingState.equals("down")) {
-			charaState = "climbDown";
 			if (y < 350) {
-				y += 4;
-			} else if (y >= 350) {
-				if (roomState == 2) {
+				y += 3;
+			} else if (roomState == 2) {
+				if (y >= 500) {
 					roomState = 1;
 					justArrived = true;
+				} else {
+					y += 3;
 				}
 			}
+			walkCount++;
 		}
 		if (movingState.equals("")) {
-			charaState = "stand";
+			walkCount++;
 		}
 	}
 	
 	void draw(Graphics g) {
-		if (charaState == "stand") {
-			g.setColor(Color.GRAY);
-		} else if (charaState == "walkLeft") {
-			g.setColor(Color.DARK_GRAY);
-		} else if (charaState == "walkRight") {
-			g.setColor(Color.BLACK);
-		} else if (charaState == "climbUp") {
-			g.setColor(Color.ORANGE);
-		} else if (charaState == "climbDown") {
-			g.setColor(Color.PINK);
+		if (movingState.equals("")) {
+			if (walkCount/10 % 2 == 0) {
+				g.setColor(Color.DARK_GRAY);
+			} else if (walkCount/10 % 2 == 1) {
+				g.setColor(Color.LIGHT_GRAY);
+			}
+		} else if (movingState == "left") {
+			if (walkCount/10 % 3 == 0) {
+				g.setColor(Color.RED);
+			} else if (walkCount/10 % 3 == 1) {
+				g.setColor(Color.ORANGE);
+			} else if (walkCount/10 % 3 == 2) {
+				g.setColor(Color.YELLOW);
+			}
+		} else if (movingState == "right") {
+			if (walkCount/10 % 3 == 0) {
+				g.setColor(Color.GREEN);
+			} else if (walkCount/10 % 3 == 1) {
+				g.setColor(Color.BLUE);
+			} else if (walkCount/10 % 3 == 2) {
+				g.setColor(Color.PINK);
+			}
+		} else if (movingState == "up") {
+			if (walkCount/10 % 3 == 0) {
+				g.setColor(Color.RED);
+			} else if (walkCount/10 % 3 == 1) {
+				g.setColor(Color.YELLOW);
+			} else if (walkCount/10 % 3 == 2) {
+				g.setColor(Color.BLUE);
+			}
+		} else if (movingState == "down") {
+			if (walkCount/10 % 3 == 0) {
+				g.setColor(Color.ORANGE);
+			} else if (walkCount/10 % 3 == 1) {
+				g.setColor(Color.GREEN);
+			} else if (walkCount/10 % 3 == 2) {
+				g.setColor(Color.PINK);
+			}
 		}
 		g.fillRect(x, y, width, height);
 	}
