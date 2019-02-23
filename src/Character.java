@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 public class Character extends GameObject{
 	boolean justArrived;
@@ -60,12 +61,8 @@ public class Character extends GameObject{
 	
 	void draw(Graphics g) {
 		if (movingState.equals("")) {
-			if (walkCount/10 % 2 == 0) {
-				g.setColor(Color.DARK_GRAY);
-			} else if (walkCount/10 % 2 == 1) {
-				g.setColor(Color.LIGHT_GRAY);
-			}
-		} else if (movingState == "left") {
+			g.setColor(Color.DARK_GRAY);
+		} else if (movingState == "right") {
 			if (walkCount/10 % 3 == 0) {
 				g.setColor(Color.RED);
 			} else if (walkCount/10 % 3 == 1) {
@@ -73,7 +70,7 @@ public class Character extends GameObject{
 			} else if (walkCount/10 % 3 == 2) {
 				g.setColor(Color.YELLOW);
 			}
-		} else if (movingState == "right") {
+		} else if (movingState == "left") {
 			if (walkCount/10 % 3 == 0) {
 				g.setColor(Color.GREEN);
 			} else if (walkCount/10 % 3 == 1) {
@@ -81,7 +78,7 @@ public class Character extends GameObject{
 			} else if (walkCount/10 % 3 == 2) {
 				g.setColor(Color.PINK);
 			}
-		} else if (movingState == "up") {
+		} else if (movingState == "down") {
 			if (walkCount/10 % 3 == 0) {
 				g.setColor(Color.RED);
 			} else if (walkCount/10 % 3 == 1) {
@@ -89,7 +86,7 @@ public class Character extends GameObject{
 			} else if (walkCount/10 % 3 == 2) {
 				g.setColor(Color.BLUE);
 			}
-		} else if (movingState == "down") {
+		} else if (movingState == "up") {
 			if (walkCount/10 % 3 == 0) {
 				g.setColor(Color.ORANGE);
 			} else if (walkCount/10 % 3 == 1) {

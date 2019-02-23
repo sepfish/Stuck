@@ -89,6 +89,11 @@ public class DevelopNotes {
  *		 Update graphics... maybe do this at home or something where I don't have to mouse draw anything. Find templates for sprites bc I can't draw sprites to save my life
  *		 Start trying to put sounds!!
  *		 Added a bit of the puzzle portion. Check the mirror!
+ *2/22	 it's japan cat day. also legendary roy was leaked, and I don't quite know what day it is. also keaton!! came home yesterday!! but he's +hp -spd :(
+ *		 I tried looking for character sprites over the weekend and was unsuccessful. try looking on manyland.
+ *		 I added another small stick!!! it's inside the sofa, and it's actually illustrated!!!
+ *		 also the pgo in the decorator is supposed to be a perfectly generic object
+ *
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED

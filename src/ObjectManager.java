@@ -16,8 +16,10 @@ public class ObjectManager {
 	boolean computerUnlocked = false;
 	boolean safeUnlocked = false;
 	boolean mirrorCheckQ = false;
+	//fun ints here
 	int mirrorCheck = 0;
 	int doorCheck = 0;
+	int sofaCheck = 0;
 	Random random;
 	Character chara;
 	InteractObject obj1;
@@ -29,6 +31,7 @@ public class ObjectManager {
 	InteractObject sofa; //as of 1/25 serves no purpose
 	InteractObject computer;
 	InteractObject safe;
+	InteractObject sideTable;
 	Ladder ladderR1;
 	Ladder ladderR2;
 	ArrayList<InteractObject> interactObjects = new ArrayList<InteractObject>();
@@ -45,6 +48,7 @@ public class ObjectManager {
 		sofa = new InteractObject(475, 445, 150, 75);
 		computer = new InteractObject(335, 415, 70, 50);
 		safe = new InteractObject(600, 320, 90, 100);
+		sideTable = new InteractObject(645, 450, 65, 75);
 		//initialize ladders
 		ladderR1 = new Ladder(750, 0, 80, 425);
 		ladderR2 = new Ladder(750, 500, 80, 100);
@@ -58,6 +62,7 @@ public class ObjectManager {
 		interactObjects.add(sofa);
 		interactObjects.add(computer);
 		interactObjects.add(safe);
+		interactObjects.add(sideTable);
 		//draw the images for the interactObjects
 		//(room 1)
 		door.setInside("nothing", "door.png", "door.png", "", 1, false);
@@ -69,8 +74,9 @@ public class ObjectManager {
 		//(room 2)
 		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
 		hole.setInside("stick (implement later)", "glue.png", "hole.png", "", 2, false);
-		sofa.setInside("nothing", "door.png", "", "", 2, false);
+		sofa.setInside("PENCIL", "pencil.png", "", "", 2, false);
 		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
+		sideTable.setInside("nothing", "", "", "", 2, false);
 		ladderR2.setImg("stairstest.png");
 	}
 	
@@ -101,17 +107,15 @@ public class ObjectManager {
 	void drawRoom2(Graphics g) {
 		desk.setName("DESK");
 		ladderR2.drawImg(g);
-		
 		desk.drawImg(g);	
 		hole.setName("HOLE IN THE WALL");
-		
 		hole.drawImg(g);
 		sofa.setName("SOFA");
-		
 		sofa.drawImg(g);
 		computer.setName("COMPUTER");
-		
 		computer.drawImgTemp(g);
+		sideTable.setName("SIDE TABLE");
+		sideTable.drawImg(g);
 		chara.draw(g);
 	}
 	
@@ -150,9 +154,15 @@ public class ObjectManager {
 			}
 		//SOFA
 		} else if (o.name.equals("SOFA")) {
-			JOptionPane.showMessageDialog(null, "There's a joke book on the sofa.\nYou decide to look inside the book.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
-			JOptionPane.showMessageDialog(null, "Inside the joke book, there's a quantum physics book.\nYou open it.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
-			JOptionPane.showMessageDialog(null, "Inside the quantum physics book, there's another joke book.\nYou feel a strange sense of deja vu.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+			if (sofaCheck == 0) {
+				JOptionPane.showMessageDialog(null, "There's a joke book on the sofa.\nYou decide to look inside the book.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Inside the joke book, there's a quantum physics book.\nYou open it.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Inside the quantum physics book, there's another joke book.\nYou feel a strange sense of deja vu.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+				sofaCheck++;
+			} else {
+				JOptionPane.showMessageDialog(null, "You're reluctant to check the sofa again, but you see something wedged between the cushions.", "SOFA", JOptionPane.INFORMATION_MESSAGE);
+				getObjectMethodNoKey(o);
+			}
 		//MIRROR
 		} else if (o.name.equals("MIRROR")) {
 			if (mirrorCheck == 0) {
@@ -166,7 +176,6 @@ public class ObjectManager {
 		//COMPUTER
 		} else if (o.name.equals("COMPUTER")) {
 			String passwordQ = JOptionPane.showInputDialog(null, "ENTER PASSWORD:", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
-					//JOptionPane.showInputDialog("ENTER PASSWORD:");
 			if (passwordQ.equalsIgnoreCase(password) && !computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You unlocked the COMPUTER.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 				JOptionPane.showMessageDialog(null, "There's a message addressed to you.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
