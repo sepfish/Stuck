@@ -107,8 +107,11 @@ public class DevelopNotes {
 	
 	/*SOUNDS TO PUT IN THE GAME
 	 * - opening various things (separate opening/closing door sound)
+	 *	 - https://freesound.org/people/InspectorJ/sounds/411791/
 	 * - computer noises (some weird stereotypical computer beep beep noise)
+	 * 	 - https://freesound.org/people/the_semen_incident/sounds/39013/
 	 * - some annoying music in the background 
+	 * 	 - https://soundcloud.com/pianissimo818/ib-ost-memory-piano-ver
 	 * - don't put title music. that sucks
 	 * - ending music? (like that music that plays when you beat "there is no game")
 	 */
