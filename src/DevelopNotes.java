@@ -93,7 +93,17 @@ public class DevelopNotes {
  *		 I tried looking for character sprites over the weekend and was unsuccessful. try looking on manyland.
  *		 I added another small stick!!! it's inside the sofa, and it's actually illustrated!!!
  *		 also the pgo in the decorator is supposed to be a perfectly generic object
- *
+ *3/1	 holy cow it's march also hrid the ice man came home also I asked my dad to check out the game and he found a few glitches also IT'S LIT FAM DABDABDAB DABDABDABDAB HASHTAG #SQUADGOALS
+ *		 fixed a glitch where when you checked something the character kept moving
+ *		 added some music!! just music though
+ *		 I tested out the sprite and it works!! but I would, uh, crop it better.
+ *		 added a message when your inventory has nothing in it, also added icons for the joptionpanes
+ *		 I just added a sound to the computer, need to make sure that works
+ *		 Add an icon for the computer, and start drawing "checked" images for sprites
+ *		 ofc, add sound & puzzles. also add an instructions screen.
+ *		 also start implementing how someone's actually going to get the key to the door in the first place. the key should go in the inventory and then the player can use it on the door
+ *		 so there's now something called keyPieces that counts the number of key pieces the character has picked up - there should also be a boolean for if they picked up the glue
+ *		 if the character has all three keyPieces AND the glue, then you can get the key
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
@@ -105,15 +115,15 @@ public class DevelopNotes {
 	 * - character
 	 */
 	
-	/*SOUNDS TO PUT IN THE GAME
+	/*SOUNDS TO PUT IN THE GAME http://bit.ly/javazoom should be in the default package anyway but just in case
 	 * - opening various things (separate opening/closing door sound)
 	 *	 - https://freesound.org/people/InspectorJ/sounds/411791/
 	 * - computer noises (some weird stereotypical computer beep beep noise)
 	 * 	 - https://freesound.org/people/the_semen_incident/sounds/39013/
 	 * - some annoying music in the background 
-	 * 	 - https://soundcloud.com/pianissimo818/ib-ost-memory-piano-ver
-	 * - don't put title music. that sucks
+	 * 	 - https://soundcloud.com/pianissimo818/ib-ost-memory-piano-ver - DONE!!
 	 * - ending music? (like that music that plays when you beat "there is no game")
+	 * 	 - chaos (ablaze) - DONE!!
 	 */
 	
 	/*PUZZLES - Please implement the necessary methods for these to work!!!!!!!!!!!!!!!!!!
@@ -131,6 +141,7 @@ public class DevelopNotes {
 	
 	//PSA: RGB value for the floor is #422d10. Darker color is #3b280e.
 	//HEY IDEA: transition screens (black screens? or that weird slidey transition black screen? that one I doubt)
+	//ALSO media palace is here: https://github.com/League-Level1-Student/level1-module4-sepfish/blob/master/src/MediaPalace.java
 	
 	//sky rgbs hmm
 	/* - #bae2e8

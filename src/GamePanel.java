@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -25,6 +27,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Decorator deco;
 	boolean test = false;
 	Inventory inv;
+	//songs
+	Song ibmemory;
+	boolean ibmemoryStart = false;
+	Song chaosablaze;
+	boolean chaosablazeStart = false;
+	//hmm
+	boolean startQ = false;
 	
 	public static BufferedImage titleImg;
 	public static BufferedImage floorImg;
@@ -38,6 +47,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		obj = new ObjectManager(chara);
 		deco = new Decorator();
 		inv = new Inventory();
+		ibmemory = new Song("memory.mp3");
+		chaosablaze = new Song("chaosablaze.mp3");
+		
 		try {
 			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title.jpg"));
 			floorImg = ImageIO.read(this.getClass().getResourceAsStream("floor.jpg"));
@@ -70,10 +82,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawMenuState(Graphics g) {
+		ibmemory.stop();
 		g.drawImage(GamePanel.titleImg, 0, 0, Stuck.width, Stuck.height, null);    
 	}
 	
 	void drawRoom1State(Graphics g) {
+		/*if (!startQ) {
+			obj.introduction();
+			startQ = true;
+		}*/
+		if (!ibmemoryStart) {
+			ibmemory.play();
+			ibmemoryStart = true;
+		}
 		g.drawImage(GamePanel.skyR1, 0, 0, Stuck.width, Stuck.height - 200, null);  
 		g.setColor(new Color(59, 40, 14));
 		g.fillRect(0, 400, Stuck.width, 200);
@@ -95,6 +116,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawEndState(Graphics g) {
+		ibmemory.stop();
+		if (!chaosablazeStart) {
+			chaosablaze.play();
+			chaosablazeStart = true;
+		}
 		g.drawImage(GamePanel.endImg, 0, 0, Stuck.width, Stuck.height, null);
 	}
 	
@@ -151,6 +177,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			chara.movingState = "right";
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			chara.movingState = "";
 			boolean tempSolution = false;
 			for (int i = 0; i < obj.interactObjects.size(); i++) {
 				if (obj.isBetween(chara, obj.interactObjects.get(i)) && obj.interactObjects.get(i).floorNumber == currentState) {

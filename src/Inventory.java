@@ -21,16 +21,23 @@ public class Inventory {
 	JLabel hLabel;
 	boolean added = false;
 	
+	ImageIcon icon;
+	
 	Inventory(){
 		frame = new JFrame();
 		panel = new JPanel();
 		frame.add(panel);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setTitle("INVENTORY");
+		icon = new ImageIcon(this.getClass().getClassLoader().getResource("icon.png"));
 	}
 	
 	void popUp() {
-		frame.setVisible(true);
+		if (panel.getComponentCount() == 0) {
+			JOptionPane.showMessageDialog(null, "Your INVENTORY is empty.", "INVENTORY", JOptionPane.INFORMATION_MESSAGE, icon);
+		} else {
+			frame.setVisible(true);
+		}
 	}
 	
 	void isItChecked(InteractObject a) {

@@ -1,19 +1,43 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 public class Character extends GameObject{
 	boolean justArrived;
 	boolean hasKey = false;
 	int walkCount = 0;
+	int keyPieces = 0;
+	
+	public static BufferedImage stand;
+	public static BufferedImage right1;
+	public static BufferedImage right2;
 
 	Character(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.BLACK);
 		// TODO Auto-generated constructor stub
+		
+		try {
+			stand = ImageIO.read(this.getClass().getResourceAsStream("IMG_0602.png"));
+			right1 = ImageIO.read(this.getClass().getResourceAsStream("IMG_0604.png"));
+			right2 = ImageIO.read(this.getClass().getResourceAsStream("IMG_0606.PNG"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	void setY(int y) {
 		this.y = y;
+	}
+	
+	void drawImg(Graphics g, BufferedImage img) {
+		if (img != null) {
+			g.drawImage(img, x, y, width, height, null);
+		}
 	}
 	
 	void update() {
@@ -60,42 +84,46 @@ public class Character extends GameObject{
 	}
 	
 	void draw(Graphics g) {
-		if (movingState.equals("")) {
-			g.setColor(Color.DARK_GRAY);
-		} else if (movingState == "right") {
-			if (walkCount/10 % 3 == 0) {
-				g.setColor(Color.RED);
-			} else if (walkCount/10 % 3 == 1) {
-				g.setColor(Color.ORANGE);
-			} else if (walkCount/10 % 3 == 2) {
-				g.setColor(Color.YELLOW);
+			if (movingState.equals("")) {
+				drawImg(g, stand);
+			} else if (movingState == "right") {
+				if (walkCount/10 % 3 == 0) {
+					drawImg(g, right1);
+				} else if (walkCount/10 % 3 == 1) {
+					drawImg(g, right2);
+				} else if (walkCount/10 % 3 == 2) {
+					g.setColor(Color.YELLOW);
+					g.fillRect(x, y, width, height);
+				}
+				
+			} else if (movingState == "left") {
+				if (walkCount/10 % 3 == 0) {
+					g.setColor(Color.GREEN);
+				} else if (walkCount/10 % 3 == 1) {
+					g.setColor(Color.BLUE);
+				} else if (walkCount/10 % 3 == 2) {
+					g.setColor(Color.PINK);
+				}
+				g.fillRect(x, y, width, height);
+			} else if (movingState == "down") {
+				if (walkCount/10 % 3 == 0) {
+					g.setColor(Color.RED);
+				} else if (walkCount/10 % 3 == 1) {
+					g.setColor(Color.YELLOW);
+				} else if (walkCount/10 % 3 == 2) {
+					g.setColor(Color.BLUE);
+				}
+				g.fillRect(x, y, width, height);
+			} else if (movingState == "up") {
+				if (walkCount/10 % 3 == 0) {
+					g.setColor(Color.ORANGE);
+				} else if (walkCount/10 % 3 == 1) {
+					g.setColor(Color.GREEN);
+				} else if (walkCount/10 % 3 == 2) {
+					g.setColor(Color.PINK);
+				}
+				g.fillRect(x, y, width, height);
 			}
-		} else if (movingState == "left") {
-			if (walkCount/10 % 3 == 0) {
-				g.setColor(Color.GREEN);
-			} else if (walkCount/10 % 3 == 1) {
-				g.setColor(Color.BLUE);
-			} else if (walkCount/10 % 3 == 2) {
-				g.setColor(Color.PINK);
-			}
-		} else if (movingState == "down") {
-			if (walkCount/10 % 3 == 0) {
-				g.setColor(Color.RED);
-			} else if (walkCount/10 % 3 == 1) {
-				g.setColor(Color.YELLOW);
-			} else if (walkCount/10 % 3 == 2) {
-				g.setColor(Color.BLUE);
-			}
-		} else if (movingState == "up") {
-			if (walkCount/10 % 3 == 0) {
-				g.setColor(Color.ORANGE);
-			} else if (walkCount/10 % 3 == 1) {
-				g.setColor(Color.GREEN);
-			} else if (walkCount/10 % 3 == 2) {
-				g.setColor(Color.PINK);
-			}
-		}
-		g.fillRect(x, y, width, height);
 	}
 
 }

@@ -6,7 +6,7 @@ import java.net.URL;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 //this is from the jukebox project in level 1 module 4 :)
-//when you actually get around to putting sounds in please download javazoom!
+//when you actually get around to putting sounds in please download javazoom! link is in developnotes
 public class Song {
 	private int duration;
 	private String songAddress;
