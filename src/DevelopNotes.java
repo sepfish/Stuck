@@ -104,6 +104,17 @@ public class DevelopNotes {
  *		 also start implementing how someone's actually going to get the key to the door in the first place. the key should go in the inventory and then the player can use it on the door
  *		 so there's now something called keyPieces that counts the number of key pieces the character has picked up - there should also be a boolean for if they picked up the glue
  *		 if the character has all three keyPieces AND the glue, then you can get the key
+ *3/8	 RIP DADFONSE, also darkness whatever banner dropped today and I had 21 orbs :)
+ *		 fixed the introduction glitch. now the game actually has an introduction!
+ *		 also you can't move during the introduction, even if you press the arrow keys
+ *		 also fixed (finally!) where if you pressed h or i during the title screen the window for either help or the inventory would pop up
+ *		 it's now slightly harder to get to the ending through debugs.
+ *		 added a method in the character that checks 1. if you have the glue and 2. if you have all three pieces and the glue
+ *		 also made it possible (I guess) to open the door. except the player doesn't know that, do they
+ *		 the music now stops when you open the door
+ *		 next time: sound effects, making it possible for the player to open the safe and not just you
+ *		 there's a commented-out line where you check the computer. make a "forgot password" option so that the player can guess the password. please don't just make it "password"
+ *		 you're almost done!!! just keep going!!!
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED

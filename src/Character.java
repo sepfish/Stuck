@@ -5,12 +5,16 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 public class Character extends GameObject{
 	boolean justArrived;
 	boolean hasKey = false;
+	boolean openDoor = false;
 	int walkCount = 0;
 	int keyPieces = 0;
+	boolean getGlue = false;
+	boolean getAllPieces = false;
 	
 	public static BufferedImage stand;
 	public static BufferedImage right1;
@@ -34,6 +38,7 @@ public class Character extends GameObject{
 		this.y = y;
 	}
 	
+	
 	void drawImg(Graphics g, BufferedImage img) {
 		if (img != null) {
 			g.drawImage(img, x, y, width, height, null);
@@ -41,6 +46,7 @@ public class Character extends GameObject{
 	}
 	
 	void update() {
+		keyPieceCheck();
 		if (movingState.equals("left")) {
 			if (x > 150 && y >= 350) {
 				x -= 3;
@@ -49,7 +55,7 @@ public class Character extends GameObject{
 		}
 		if (movingState.equals("right")) {
 			if (x < 800) {
-				if (roomState == 1 && y == 350) {
+				if (roomState == 1 && y >= 350) {
 					x += 3;
 				} else if (roomState == 2) {
 					x += 3;
@@ -80,6 +86,14 @@ public class Character extends GameObject{
 		}
 		if (movingState.equals("")) {
 			walkCount++;
+		}
+	}
+	
+	void keyPieceCheck() {
+		if (keyPieces == 3 && getGlue && !getAllPieces) {
+			getAllPieces = true;
+			JOptionPane.showMessageDialog(null, "YAY YOU GOT EVERYTHING NOW DO SOMETHING ABOUT IT");
+			hasKey = true;
 		}
 	}
 	

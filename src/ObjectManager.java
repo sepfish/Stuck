@@ -23,10 +23,12 @@ public class ObjectManager {
 	boolean computerUnlocked = false;
 	boolean safeUnlocked = false;
 	boolean mirrorCheckQ = false;
-	//fun ints here
+	//fun stuff here
 	int mirrorCheck = 0;
 	int doorCheck = 0;
 	int sofaCheck = 0;
+	boolean dramaticMoment = false;
+	//interactObjects
 	Random random;
 	Character chara;
 	InteractObject obj1;
@@ -74,7 +76,7 @@ public class ObjectManager {
 		interactObjects.add(sideTable);
 		//draw the images for the interactObjects
 		//(room 1)
-		door.setInside("nothing", "door.png", "door.png", "", 1, false);
+		door.setInside("DOOR KEY", "door.png", "door.png", "", 1, false);
 		obj1.setInside("nothing", "clock.png", "chesttest.png", "", 1, false);
 		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "", 1, false);
 		chest.lock();
@@ -104,7 +106,7 @@ public class ObjectManager {
 		door.drawImg(g);
 		obj1.setName("CHEST");
 		obj1.drawImg(g);
-		chest.setName("CHEST");
+		chest.setName("OTHER CHEST");
 		chest.drawImg(g);
 		mirror.setName("MIRROR");
 		mirror.drawImg(g);
@@ -141,18 +143,27 @@ public class ObjectManager {
 	}
 
 	void introduction() {
+		chara.movingState = "";
 		JOptionPane.showMessageDialog(null, "You're STUCK.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 		JOptionPane.showMessageDialog(null, "You found yourself inside this room, with no recollection of how you got here.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 		JOptionPane.showMessageDialog(null, "The only thing you can do right now is figure out how to ESCAPE.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
+		JOptionPane.showMessageDialog(null, "[Press I for inventory. Press H for help.]", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 	
 	void check(InteractObject o) {
-		System.out.println("Key pieces: " + chara.keyPieces);
 		random = new Random();
 		int rand = random.nextInt(3);
 		//DOOR
 		if (o.name.equals("DOOR")) {
 			if(chara.hasKey) {
+				JOptionPane.showMessageDialog(null, "You open your INVENTORY and take out the three small objects you've collected:\na PENCIL, a STICK (IMPLEMENT LATER), and a KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "Using way too much of the GLUE, you create a long object.\nAn extension of your arm, if you will.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "Using this object you created, you crouch under the DOOR and successfully sweep the small KEY towards you.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
+				getObjectMethodNoKey(o);
+				chara.hasKey = false;
+				chara.openDoor = true;
+			} else if (chara.openDoor) {
+				dramaticMoment = true;
 				JOptionPane.showMessageDialog(null, "You open the DOOR.", "", JOptionPane.INFORMATION_MESSAGE, icon);
 				chara.roomState = 3;
 			} else {
@@ -182,6 +193,9 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "You're reluctant to check the sofa again, but you see something wedged between the cushions.", "SOFA", JOptionPane.INFORMATION_MESSAGE, icon);
 				getObjectMethodKeyPieces(o);
 			}
+		//HOLE IN THE WALL, BECAUSE I'M LAZY
+		} else if (o.name.equals("HOLE IN THE WALL")) {
+			getObjectMethodKeyPieces(o);
 		//MIRROR
 		} else if (o.name.equals("MIRROR")) {
 			if (mirrorCheck == 0) {
@@ -195,6 +209,7 @@ public class ObjectManager {
 		//COMPUTER
 		} else if (o.name.equals("COMPUTER")) {
 			loadSound("beep.wav");
+			//JOptionPane.showInputDialog(null, "ENTER PASSWORD", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon, array or arraylist w/values, initialSelectionValue also an array??)
 			String passwordQ = JOptionPane.showInputDialog(null, "ENTER PASSWORD:", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 			if (passwordQ.equalsIgnoreCase(password) && !computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You unlocked the COMPUTER.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -214,12 +229,12 @@ public class ObjectManager {
 			if (combinationQ.equals(combination)) {
 				JOptionPane.showMessageDialog(null, "You hear a click and the door opens slightly.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "Inside is a small KEY.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "You don't remember what the KEY is for, though.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
 				safeUnlocked = true;
-				getObjectMethodNoKey(o);
-				System.out.println("hmm");
+				getObjectMethodKeyPieces(o);
 			} else if (safeUnlocked){
 				JOptionPane.showMessageDialog(null, "You look inside the safe again.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
-				getObjectMethodNoKey(o);
+				getObjectMethodKeyPieces(o);
 			} else {
 				JOptionPane.showMessageDialog(null, "That's the wrong COMBINATION.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
 			}
@@ -264,6 +279,9 @@ public class ObjectManager {
 				if (o.isKey) {
 					o.hasKey = true;
 				}
+				if (o.name.equals("OTHER CHEST")) {
+					chara.getGlue = true;
+				}
 			}
 		}
 	}
@@ -271,9 +289,18 @@ public class ObjectManager {
 	void getObjectMethodNoKey(InteractObject o) {
 		random = new Random();
 		int rand = random.nextInt(3);
-		if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked) {
+		if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked && !o.name.equals("DOOR")) {
+			System.out.println(o.name);
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, icon, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {
+				o.getObject = true;
+				if (o.name.equals("OTHER CHEST")) {
+					chara.getGlue = true;
+				}
+			}
+		} else if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked && o.name.equals("DOOR")) {
+			int checkQhmm = JOptionPane.showOptionDialog(null, "You find the " + o.objInside + " under the " + o.name + ".", "STUCK", 0, JOptionPane.INFORMATION_MESSAGE, icon, new String[] {"DON'T", "TAKE IT"}, null);
+			if (checkQhmm == 1) {
 				o.getObject = true;
 			}
 		} else if (o.objInside != null && o.objInside != "nothing" && o.getObject) {

@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean chaosablazeStart = false;
 	//hmm
 	boolean startQ = false;
+	boolean pressSomething = false;
 	
 	public static BufferedImage titleImg;
 	public static BufferedImage floorImg;
@@ -87,13 +88,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	void drawRoom1State(Graphics g) {
-		/*if (!startQ) {
-			obj.introduction();
+		if (!startQ) {
 			startQ = true;
-		}*/
+			pressSomething = true;
+			obj.introduction();
+		}
 		if (!ibmemoryStart) {
 			ibmemory.play();
 			ibmemoryStart = true;
+		}
+		if (obj.dramaticMoment) { 
+			ibmemory.stop();
 		}
 		g.drawImage(GamePanel.skyR1, 0, 0, Stuck.width, Stuck.height - 200, null);  
 		g.setColor(new Color(59, 40, 14));
@@ -165,7 +170,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState != menu) {
-			currentState = end;
+			String hmmmmm = JOptionPane.showInputDialog("Enter the debug password:");
+			if (hmmmmm.equals("darkness")) {
+				currentState = end;
+				JOptionPane.showMessageDialog(null, "Take this out!!");
+			}
 		}
 		if (currentState == menu) {
 			currentState = room1;
@@ -213,10 +222,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 					currentState = 1;
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_I) {
+		if (e.getKeyCode() == KeyEvent.VK_I && pressSomething) {
 			inv.popUp();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_H) {
+		if (e.getKeyCode() == KeyEvent.VK_H && pressSomething) {
 			inv.help();
 		}
 	}

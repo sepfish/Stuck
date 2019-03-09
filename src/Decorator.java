@@ -13,13 +13,13 @@ public class Decorator {
 		lamp = new InteractObject(255, 400, 50, 120);
 		painting = new InteractObject(415, 305, 75, 100);
 		pgo = new InteractObject(835, 485, 40, 40);
-		
+		//room 1
 		clock.setInside("nothing", "clock.png", "clock2.png", "", 0, false);
 		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", "", 0, false);
 		//room 2
 		painting.setInside("nothing", "ib.png", "ib.png", "", 0, false);
 		lamp.setInside("nothing", "lamp.png", "lamp.png", "", 0, false);
-		pgo.setInside("nothing", "", "", "", 0, false);
+		pgo.setInside("nothing", "pgo.png", "pgo.png", "", 0, false);
 	}
 	
 	//floor number set to 0 because I don't want them to get checked anyway
