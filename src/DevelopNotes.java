@@ -115,39 +115,33 @@ public class DevelopNotes {
  *		 next time: sound effects, making it possible for the player to open the safe and not just you
  *		 there's a commented-out line where you check the computer. make a "forgot password" option so that the player can guess the password. please don't just make it "password"
  *		 you're almost done!!! just keep going!!!
+ *3/15	 we had a fun dance class today. that's the only interesting thing that happened
+ *		 there is now a hint for the password. the password is now 123456. such a dumb password
+ *		 there are still problems when you press cancel on the computer??? idk the game still runs but the console screams at you
+ *		 I was using loadSound wrong like a dumdum :I so now the beep finally plays
+ *		 it is now possible to actually win the game!!! now to make it look pretty
+ *		 finally updated the frickin desk. might want to put a chair there? was too lazy to put one
+ *		 I would try to add "check portraits"?? maybe? if there is time?
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
-	 * - desk
 	 * - door
 	 * - safe
 	 * - sofa
-	 * - stick (implement later) stick
 	 * - character
 	 */
 	
+	//3.15.19: possible to win the game
+	
 	/*SOUNDS TO PUT IN THE GAME http://bit.ly/javazoom should be in the default package anyway but just in case
 	 * - opening various things (separate opening/closing door sound)
-	 *	 - https://freesound.org/people/InspectorJ/sounds/411791/
+	 *	 - https://freesound.org/people/InspectorJ/sounds/411791/ (close)
 	 * - computer noises (some weird stereotypical computer beep beep noise)
-	 * 	 - https://freesound.org/people/the_semen_incident/sounds/39013/
+	 * 	 - https://freesound.org/people/the_semen_incident/sounds/39013/ (beep)
 	 * - some annoying music in the background 
 	 * 	 - https://soundcloud.com/pianissimo818/ib-ost-memory-piano-ver - DONE!!
 	 * - ending music? (like that music that plays when you beat "there is no game")
 	 * 	 - chaos (ablaze) - DONE!!
-	 */
-	
-	/*PUZZLES - Please implement the necessary methods for these to work!!!!!!!!!!!!!!!!!!
-	 * - The key to the door is under the door itself, so you have to find some kind of long stick/broom
-	 * - There's a note behind the mirror that tells you this.
-	 * - The mirror should have to be checked multiple times to find this (?) 
-	 * - The dialogue for checking the "door" should change to the "what's that under the door" after the player has found the note.
-	 * - One of the chests is locked. You have to find the key to the chest. Inside the chest is glue.
-	 * - The key to that locked chest is inside the desk on the second floor.
-	 * - The player needs to find three small sticks(tm). One is in a hole in the wall. It should be Very Hard to see (?)
-	 * - After the player finds all three of the Small Sticks(tm), the Long Stick(tm) will be created and the player can escape.
-	 * - There should be a small safe somewhere. There should also be a computer somewhere. Booting up the computer will tell the player a small clue about the code to the safe.
-	 * - The safe should have a key for wherever one of the other Small Sticks(tm) are.
 	 */
 	
 	//PSA: RGB value for the floor is #422d10. Darker color is #3b280e.
@@ -160,12 +154,4 @@ public class DevelopNotes {
 	 * - #b1dce3
 	 * - #a2d4db
 	 */
-	
-	/*SMALL STICK IDEAS
-	 * - Pencil
-	 * - Pipe
-	 * - An actual stick
-	 * - Wire
-	 */
-	
 }

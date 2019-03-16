@@ -18,7 +18,7 @@ import java.applet.AudioClip;
 import java.awt.Color;
 
 public class ObjectManager {
-	String password = "Password";
+	String password = "123456";
 	String combination = "1061";
 	boolean computerUnlocked = false;
 	boolean safeUnlocked = false;
@@ -46,13 +46,13 @@ public class ObjectManager {
 	ArrayList<InteractObject> interactObjects = new ArrayList<InteractObject>();
 	ImageIcon icon;
 	
-	ObjectManager(Character c){
+	ObjectManager(Character c) {
 		chara = c;
 		icon = new ImageIcon(this.getClass().getClassLoader().getResource("icon.png"));
 		//initialize interactObjects
 		door = new InteractObject(140, 265, 90, 135);
 		obj1 = new InteractObject(265, 300, 90, 120);
-		desk = new InteractObject(300, 465, 120, 60);
+		desk = new InteractObject(315, 465, 120, 60);
 		mirror = new InteractObject(500, 275, 70, 120);
 		chest = new InteractObject(365, 300, 90, 120);
 		hole = new InteractObject(150, 480, 20, 20);
@@ -84,7 +84,7 @@ public class ObjectManager {
 		safe.setInside("OTHER KEY", "key2.png", "", "", 1, false);
 		//(room 2)
 		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
-		hole.setInside("stick (implement later)", "glue.png", "hole.png", "", 2, false);
+		hole.setInside("STICK", "stick.png", "hole.png", "", 2, false);
 		sofa.setInside("PENCIL", "pencil.png", "", "", 2, false);
 		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
 		sideTable.setInside("nothing", "", "", "", 2, false);
@@ -149,7 +149,9 @@ public class ObjectManager {
 		JOptionPane.showMessageDialog(null, "The only thing you can do right now is figure out how to ESCAPE.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 		JOptionPane.showMessageDialog(null, "[Press I for inventory. Press H for help.]", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
+
 	
+//THE GIANT CHECK METHOD-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void check(InteractObject o) {
 		random = new Random();
 		int rand = random.nextInt(3);
@@ -208,18 +210,20 @@ public class ObjectManager {
 			
 		//COMPUTER
 		} else if (o.name.equals("COMPUTER")) {
-			loadSound("beep.wav");
-			//JOptionPane.showInputDialog(null, "ENTER PASSWORD", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon, array or arraylist w/values, initialSelectionValue also an array??)
-			String passwordQ = JOptionPane.showInputDialog(null, "ENTER PASSWORD:", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
+			AudioClip beep = loadSound("beep.wav");
+			beep.play();
+			String passwordQ = JOptionPane.showInputDialog(null, "ENTER PASSWORD:\n\n\nHINT: most common password", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
 			if (passwordQ.equalsIgnoreCase(password) && !computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You unlocked the COMPUTER.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "There's a message addressed to you.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
-				JOptionPane.showMessageDialog(null, "'hey __________! the password to the safe is 1061. the ___________ key's in there.'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "'hey __________! the combination to the safe is " + combination + ". the ___________ key's in there.'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 				computerUnlocked = true;
 				JOptionPane.showMessageDialog(null, "'you don't need to enter the password to the computer again, by the way. just press enter or something. good luck!'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 			} else if (computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You look at the message on the computer again.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
-				JOptionPane.showMessageDialog(null, "'hey __________! the password to the safe is 1061. there's a key in there.'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "'hey __________! the combination to the safe is " + combination + ". there's a key in there.'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
+			} else if (passwordQ.equals(null)){
+				JOptionPane.showMessageDialog(null, "You decide to try again later.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 			} else {
 				JOptionPane.showMessageDialog(null, "That's the wrong PASSWORD.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 			}
@@ -272,6 +276,8 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "The " + o.name + " contains nothing inside.", "INSIDE", JOptionPane.INFORMATION_MESSAGE, icon);
 			}
 		//NORMAL CHECKING
+		AudioClip scree = loadSound("creak.wav");
+		scree.play();
 		} else if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked) {
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, icon, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {

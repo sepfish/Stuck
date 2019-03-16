@@ -92,7 +92,6 @@ public class Character extends GameObject{
 	void keyPieceCheck() {
 		if (keyPieces == 3 && getGlue && !getAllPieces) {
 			getAllPieces = true;
-			JOptionPane.showMessageDialog(null, "YAY YOU GOT EVERYTHING NOW DO SOMETHING ABOUT IT");
 			hasKey = true;
 		}
 	}

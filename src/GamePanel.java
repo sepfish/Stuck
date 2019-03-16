@@ -169,13 +169,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState != menu) {
-			String hmmmmm = JOptionPane.showInputDialog("Enter the debug password:");
-			if (hmmmmm.equals("darkness")) {
-				currentState = end;
-				JOptionPane.showMessageDialog(null, "Take this out!!");
-			}
-		}
 		if (currentState == menu) {
 			currentState = room1;
 		}
