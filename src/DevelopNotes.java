@@ -122,13 +122,18 @@ public class DevelopNotes {
  *		 it is now possible to actually win the game!!! now to make it look pretty
  *		 finally updated the frickin desk. might want to put a chair there? was too lazy to put one
  *		 I would try to add "check portraits"?? maybe? if there is time?
+ *3/22	 bunny bruno is the newest male healer in like two years!! he explodes his shirt too! that sounds so weird out of context
+ *		 two people tested the game. changed "most common password" to 12345
+ *		 safe and computer have "cancel" inputpanel problems (they throw exceptions so can't compare). the guy said he'd tell me how to fix it next week
+ *		 added safe graphics? idk they look weird
+ *		 put in tales music?
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
 	 * - door
 	 * - safe
-	 * - sofa
 	 * - character
+	 * - clock
 	 */
 	
 	//3.15.19: possible to win the game

@@ -18,7 +18,7 @@ import java.applet.AudioClip;
 import java.awt.Color;
 
 public class ObjectManager {
-	String password = "123456";
+	String password = "12345";
 	String combination = "1061";
 	boolean computerUnlocked = false;
 	boolean safeUnlocked = false;
@@ -81,11 +81,11 @@ public class ObjectManager {
 		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "", 1, false);
 		chest.lock();
 		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
-		safe.setInside("OTHER KEY", "key2.png", "", "", 1, false);
+		safe.setInside("OTHER KEY", "key2.png", "safetest.png", "", 1, false);
 		//(room 2)
 		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
 		hole.setInside("STICK", "stick.png", "hole.png", "", 2, false);
-		sofa.setInside("PENCIL", "pencil.png", "", "", 2, false);
+		sofa.setInside("PENCIL", "pencil.png", "sofa.png", "", 2, false);
 		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
 		sideTable.setInside("nothing", "", "", "", 2, false);
 		ladderR2.setImg("stairstest.png");
@@ -158,7 +158,7 @@ public class ObjectManager {
 		//DOOR
 		if (o.name.equals("DOOR")) {
 			if(chara.hasKey) {
-				JOptionPane.showMessageDialog(null, "You open your INVENTORY and take out the three small objects you've collected:\na PENCIL, a STICK (IMPLEMENT LATER), and a KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "You open your INVENTORY and take out the three small objects you've collected:\na PENCIL, a STICK, and a KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "Using way too much of the GLUE, you create a long object.\nAn extension of your arm, if you will.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "Using this object you created, you crouch under the DOOR and successfully sweep the small KEY towards you.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 				getObjectMethodNoKey(o);
