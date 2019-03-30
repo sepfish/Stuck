@@ -6,6 +6,7 @@ public class Decorator {
 	InteractObject lamp;
 	InteractObject painting;
 	InteractObject pgo;
+	InteractObject chair;
 
 	Decorator(){
 		clock = new InteractObject(360, 175, 50, 50);
@@ -13,6 +14,7 @@ public class Decorator {
 		lamp = new InteractObject(255, 400, 50, 120);
 		painting = new InteractObject(415, 305, 75, 100);
 		pgo = new InteractObject(835, 485, 40, 40);
+		chair = new InteractObject(340, 460, 50, 70);
 		//room 1
 		clock.setInside("nothing", "clock.png", "clock2.png", "", 0, false);
 		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", "", 0, false);
@@ -20,6 +22,7 @@ public class Decorator {
 		painting.setInside("nothing", "ib.png", "ib.png", "", 0, false);
 		lamp.setInside("nothing", "lamp.png", "lamp.png", "", 0, false);
 		pgo.setInside("nothing", "pgo.png", "pgo.png", "", 0, false);
+		chair.setInside("nothing", "chair.png", "chair.png", "", 0, false);
 	}
 	
 	//floor number set to 0 because I don't want them to get checked anyway
@@ -32,5 +35,6 @@ public class Decorator {
 		lamp.drawImg(g);
 		painting.drawImg(g);
 		pgo.drawImg(g);
+		chair.drawImg(g);
 	}
 }

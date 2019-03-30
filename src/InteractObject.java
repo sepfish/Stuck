@@ -24,11 +24,6 @@ public class InteractObject extends GameObject{
 	static boolean hasKey = false;
 	boolean isKey = false;
 	int floorNumber;
-	/* This is a temporary system right now: 
-	 * The boolean isKey determines whether or not the object inside it will unlock something.
-	 * The boolean hasKey determines whether or not the object inside that unlocks things is in the character's inventory.
-	 * hasKey changes to true when the "key" enters the inventory.
-	 */
 	
 	public BufferedImage objImg;
 	public BufferedImage objImgCheck;

@@ -77,8 +77,8 @@ public class ObjectManager {
 		//draw the images for the interactObjects
 		//(room 1)
 		door.setInside("DOOR KEY", "door.png", "door.png", "", 1, false);
-		obj1.setInside("nothing", "clock.png", "chesttest.png", "", 1, false);
-		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "", 1, false);
+		obj1.setInside("nothing", "clock.png", "chesttest.png", "chesttest1.png", 1, false);
+		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "chesttest1.png", 1, false);
 		chest.lock();
 		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
 		safe.setInside("OTHER KEY", "key2.png", "safetest.png", "", 1, false);
@@ -105,14 +105,13 @@ public class ObjectManager {
 		door.setName("DOOR");
 		door.drawImg(g);
 		obj1.setName("CHEST");
-		obj1.drawImg(g);
+		obj1.drawImgTemp(g);
 		chest.setName("OTHER CHEST");
-		chest.drawImg(g);
+		chest.drawImgTemp(g);
 		mirror.setName("MIRROR");
 		mirror.drawImg(g);
 		safe.setName("SAFE");
 		safe.drawImg(g);
-		chara.draw(g);
 	}
 	
 	void drawRoom2(Graphics g) {
@@ -127,7 +126,6 @@ public class ObjectManager {
 		computer.drawImgTemp(g);
 		sideTable.setName("SIDE TABLE");
 		sideTable.drawImg(g);
-		chara.draw(g);
 	}
 	
 	public AudioClip loadSound(String fileName) {
@@ -148,6 +146,14 @@ public class ObjectManager {
 		JOptionPane.showMessageDialog(null, "You found yourself inside this room, with no recollection of how you got here.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 		JOptionPane.showMessageDialog(null, "The only thing you can do right now is figure out how to ESCAPE.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 		JOptionPane.showMessageDialog(null, "[Press I for inventory. Press H for help.]", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
+	}
+	
+	String askQ(String question, String name) {
+		String r = JOptionPane.showInputDialog(null, question, name, JOptionPane.INFORMATION_MESSAGE);
+		if (r == null) {
+			r = "";
+		}
+		return r;
 	}
 
 	
@@ -212,7 +218,7 @@ public class ObjectManager {
 		} else if (o.name.equals("COMPUTER")) {
 			AudioClip beep = loadSound("beep.wav");
 			beep.play();
-			String passwordQ = JOptionPane.showInputDialog(null, "ENTER PASSWORD:\n\n\nHINT: most common password", "COMPUTER", JOptionPane.INFORMATION_MESSAGE);
+			String passwordQ = askQ("ENTER PASSWORD:\n\n\nHINT: most common password", "COMPUTER");
 			if (passwordQ.equalsIgnoreCase(password) && !computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You unlocked the COMPUTER.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "There's a message addressed to you.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -222,14 +228,14 @@ public class ObjectManager {
 			} else if (computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You look at the message on the computer again.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "'hey __________! the combination to the safe is " + combination + ". there's a key in there.'", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
-			} else if (passwordQ.equals(null)){
+			} else if (passwordQ.equals("")){
 				JOptionPane.showMessageDialog(null, "You decide to try again later.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 			} else {
 				JOptionPane.showMessageDialog(null, "That's the wrong PASSWORD.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 			}
 		//SAFE
 		} else if (o.name.equals("SAFE") && !safeUnlocked) {
-			String combinationQ = JOptionPane.showInputDialog(null, "ENTER COMBINATION:", "SAFE", JOptionPane.INFORMATION_MESSAGE);
+			String combinationQ = askQ("ENTER COMBINATION", "SAFE");
 			if (combinationQ.equals(combination)) {
 				JOptionPane.showMessageDialog(null, "You hear a click and the door opens slightly.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "Inside is a small KEY.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -239,6 +245,8 @@ public class ObjectManager {
 			} else if (safeUnlocked){
 				JOptionPane.showMessageDialog(null, "You look inside the safe again.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
 				getObjectMethodKeyPieces(o);
+			} else if (combinationQ.equals("")){
+				JOptionPane.showMessageDialog(null, "You decide to try again later.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
 			} else {
 				JOptionPane.showMessageDialog(null, "That's the wrong COMBINATION.", "SAFE", JOptionPane.INFORMATION_MESSAGE, icon);
 			}

@@ -127,13 +127,21 @@ public class DevelopNotes {
  *		 safe and computer have "cancel" inputpanel problems (they throw exceptions so can't compare). the guy said he'd tell me how to fix it next week
  *		 added safe graphics? idk they look weird
  *		 put in tales music?
+ *3/29	 I got abs man. he is a brick wall of a troubadour.
+ *		 null exceptions on safe and computer are fixed!
+ *		 will work on the character in the near future because this game needs to be Done!!
+ *		 Added check portraits to the chests FINALLy
+ *		 added a chair :)
+ *		 should add more graphics/sounds/a tales reference
+ *		 maybe make it so that the combination to the safe is randomly generated
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
 	 * - door
-	 * - safe
 	 * - character
 	 * - clock
+	 * - stairs
+	 * - side table
 	 */
 	
 	//3.15.19: possible to win the game
