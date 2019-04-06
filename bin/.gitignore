@@ -9,14 +9,12 @@
 /InteractObject.class
 /Inventory.class
 /Ladder.class
-/ObjectManager.class
-/Song$1.class
-/Song.class
-/Stuck.class
 /beep.wav
 /bookshelf.png
+/chair.png
 /chaosablaze.mp3
 /chesttest.png
+/chesttest1.png
 /clock.png
 /clock2.png
 /computer.png
@@ -47,5 +45,12 @@
 /stairstest.png
 /stick.png
 /title.jpg
-/chesttest1.png
-/chair.png
+/ObjectManager.class
+/Song$1.class
+/Song.class
+/Stuck.class
+/Delight in Victory - Tales of Xillia Music Extended.mp3
+/delightinvictory.mp3
+/key3.png
+/sidetabletest.png
+/long.jpg

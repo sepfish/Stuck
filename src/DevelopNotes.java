@@ -134,6 +134,11 @@ public class DevelopNotes {
  *		 added a chair :)
  *		 should add more graphics/sounds/a tales reference
  *		 maybe make it so that the combination to the safe is randomly generated
+ *4/5	 finals are done!! the feh channel yesterday sucked. rip my chances of getting gen 1 units.
+ *		 made it so the combination to the safe is randomly generated
+ *		 added a door key! you forgot about that
+ *		 added Delight In Victory - Tales of Xillia OST Extended (dooooo doodoodoodoo doodoodoo doodoo da doodoodoodoo da doo doo da doo)
+ *		 added stairs
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
@@ -141,7 +146,6 @@ public class DevelopNotes {
 	 * - character
 	 * - clock
 	 * - stairs
-	 * - side table
 	 */
 	
 	//3.15.19: possible to win the game
@@ -158,7 +162,6 @@ public class DevelopNotes {
 	 */
 	
 	//PSA: RGB value for the floor is #422d10. Darker color is #3b280e.
-	//HEY IDEA: transition screens (black screens? or that weird slidey transition black screen? that one I doubt)
 	//ALSO media palace is here: https://github.com/League-Level1-Student/level1-module4-sepfish/blob/master/src/MediaPalace.java
 	
 	//sky rgbs hmm

@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -32,9 +33,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean ibmemoryStart = false;
 	Song chaosablaze;
 	boolean chaosablazeStart = false;
+	Song dvictory;
+	boolean dvictoryStart = false;
 	//hmm
 	boolean startQ = false;
 	boolean pressSomething = false;
+	Random random;
 	
 	public static BufferedImage titleImg;
 	public static BufferedImage floorImg;
@@ -50,6 +54,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		inv = new Inventory();
 		ibmemory = new Song("memory.mp3");
 		chaosablaze = new Song("chaosablaze.mp3");
+		dvictory = new Song("delightinvictory.mp3");
 		
 		try {
 			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title.jpg"));
@@ -124,10 +129,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	void drawEndState(Graphics g) {
 		ibmemory.stop();
-		if (!chaosablazeStart) {
-			chaosablaze.play();
-			chaosablazeStart = true;
+		random = new Random();
+		int chaosorvictory = random.nextInt(2);
+		if (chaosorvictory == 0) {
+			if (!chaosablazeStart) {
+				chaosablaze.play();
+				chaosablazeStart = true;
+			}
+		} else {
+			if (!dvictoryStart) {
+				dvictory.play();
+				dvictoryStart = true;
+			}
 		}
+			
 		g.drawImage(GamePanel.endImg, 0, 0, Stuck.width, Stuck.height, null);
 	}
 	

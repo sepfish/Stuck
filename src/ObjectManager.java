@@ -19,7 +19,7 @@ import java.awt.Color;
 
 public class ObjectManager {
 	String password = "12345";
-	String combination = "1061";
+	String combination;
 	boolean computerUnlocked = false;
 	boolean safeUnlocked = false;
 	boolean mirrorCheckQ = false;
@@ -48,6 +48,12 @@ public class ObjectManager {
 	
 	ObjectManager(Character c) {
 		chara = c;
+		Random rand = new Random();
+		int rand1 = rand.nextInt(9);
+		int rand2 = rand.nextInt(9);
+		int rand3 = rand.nextInt(9);
+		int rand4 = rand.nextInt(9);
+		combination = Integer.toString(rand1) + Integer.toString(rand2) + Integer.toString(rand3) + Integer.toString(rand4);
 		icon = new ImageIcon(this.getClass().getClassLoader().getResource("icon.png"));
 		//initialize interactObjects
 		door = new InteractObject(140, 265, 90, 135);
@@ -59,7 +65,7 @@ public class ObjectManager {
 		sofa = new InteractObject(475, 445, 150, 75);
 		computer = new InteractObject(335, 415, 70, 50);
 		safe = new InteractObject(600, 320, 90, 100);
-		sideTable = new InteractObject(645, 450, 65, 75);
+		sideTable = new InteractObject(645, 465, 44, 51);
 		//initialize ladders
 		ladderR1 = new Ladder(750, 0, 80, 425);
 		ladderR2 = new Ladder(750, 500, 80, 100);
@@ -76,18 +82,19 @@ public class ObjectManager {
 		interactObjects.add(sideTable);
 		//draw the images for the interactObjects
 		//(room 1)
-		door.setInside("DOOR KEY", "door.png", "door.png", "", 1, false);
+		door.setInside("DOOR KEY", "key3.png", "door.png", "", 1, false);
 		obj1.setInside("nothing", "clock.png", "chesttest.png", "chesttest1.png", 1, false);
 		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "chesttest1.png", 1, false);
 		chest.lock();
 		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
 		safe.setInside("OTHER KEY", "key2.png", "safetest.png", "", 1, false);
+		ladderR1.setImg("long.jpg");
 		//(room 2)
 		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
 		hole.setInside("STICK", "stick.png", "hole.png", "", 2, false);
 		sofa.setInside("PENCIL", "pencil.png", "sofa.png", "", 2, false);
 		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
-		sideTable.setInside("nothing", "", "", "", 2, false);
+		sideTable.setInside("nothing", "", "sidetabletest.png", "", 2, false);
 		ladderR2.setImg("stairstest.png");
 	}
 	
@@ -100,7 +107,7 @@ public class ObjectManager {
 	}
 	
 	void drawRoom1(Graphics g) {
-		ladderR1.draw(g);
+		ladderR1.drawImg(g);
 		door.setColor(Color.YELLOW);
 		door.setName("DOOR");
 		door.drawImg(g);
@@ -304,7 +311,6 @@ public class ObjectManager {
 		random = new Random();
 		int rand = random.nextInt(3);
 		if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked && !o.name.equals("DOOR")) {
-			System.out.println(o.name);
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, icon, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {
 				o.getObject = true;
