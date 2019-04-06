@@ -139,6 +139,7 @@ public class DevelopNotes {
  *		 added a door key! you forgot about that
  *		 added Delight In Victory - Tales of Xillia OST Extended (dooooo doodoodoodoo doodoodoo doodoo da doodoodoodoo da doo doo da doo)
  *		 added stairs
+ *4/5 part 2: please rescue the character files from the main build path thanks
 */
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
