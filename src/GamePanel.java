@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	
 	GamePanel(){
-		chara = new Character(450, 350, 60, 80);
+		chara = new Character(450, 350, 63, 84);
 		timer = new Timer(1000/60, this);
 		obj = new ObjectManager(chara);
 		deco = new Decorator();
@@ -190,13 +190,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			currentState = room1;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			chara.movingState  = "left";
+			chara.setMovingState("left");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			chara.movingState = "right";
+			chara.setMovingState("right");
 		}
-		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			chara.movingState = "";
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			chara.setMovingState("");
 			boolean tempSolution = false;
 			for (int i = 0; i < obj.interactObjects.size(); i++) {
 				if (obj.isBetween(chara, obj.interactObjects.get(i)) && obj.interactObjects.get(i).floorNumber == currentState) {
@@ -221,7 +221,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			if (chara.roomState == 2) {
 				chara.setY(450);
 				currentState = 2;
-				chara.movingState = "";
+				chara.setMovingState("");
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN && obj.isBetween(chara, obj.ladderR1)) {

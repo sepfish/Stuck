@@ -7,6 +7,7 @@ public class Decorator {
 	InteractObject painting;
 	InteractObject pgo;
 	InteractObject chair;
+	InteractObject pframe;
 
 	Decorator(){
 		clock = new InteractObject(360, 175, 50, 50);
@@ -15,6 +16,7 @@ public class Decorator {
 		painting = new InteractObject(415, 305, 75, 100);
 		pgo = new InteractObject(835, 485, 40, 40);
 		chair = new InteractObject(340, 460, 50, 70);
+		pframe = new InteractObject(655, 435, 25, 30);
 		//room 1
 		clock.setInside("nothing", "clock.png", "clock2.png", "", 0, false);
 		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", "", 0, false);
@@ -36,5 +38,6 @@ public class Decorator {
 		painting.drawImg(g);
 		pgo.drawImg(g);
 		chair.drawImg(g);
+		pframe.drawImg(g);
 	}
 }

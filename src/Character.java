@@ -17,8 +17,16 @@ public class Character extends GameObject{
 	boolean getAllPieces = false;
 	
 	public static BufferedImage stand;
+	public static BufferedImage back;
 	public static BufferedImage right1;
 	public static BufferedImage right2;
+	public static BufferedImage right3;
+	public static BufferedImage climb1;
+	public static BufferedImage climb2;
+	public static BufferedImage left1;
+	public static BufferedImage left2;
+	public static BufferedImage left3;
+	
 
 	Character(int x, int y, int width, int height) {
 		super(x, y, width, height, Color.BLACK);
@@ -26,8 +34,16 @@ public class Character extends GameObject{
 		
 		try {
 			stand = ImageIO.read(this.getClass().getResourceAsStream("IMG_0602.png"));
+			back = ImageIO.read(this.getClass().getResourceAsStream("back.png"));
 			right1 = ImageIO.read(this.getClass().getResourceAsStream("IMG_0604.png"));
 			right2 = ImageIO.read(this.getClass().getResourceAsStream("IMG_0606.PNG"));
+			right3 = ImageIO.read(this.getClass().getResourceAsStream("right.png"));
+			climb1 = ImageIO.read(this.getClass().getResourceAsStream("back1.png"));
+			climb2 = ImageIO.read(this.getClass().getResourceAsStream("back2.png"));
+			left1 = ImageIO.read(this.getClass().getResourceAsStream("left.png"));
+			left2 = ImageIO.read(this.getClass().getResourceAsStream("left1.png"));
+			left3 = ImageIO.read(this.getClass().getResourceAsStream("left2.png"));
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,6 +52,10 @@ public class Character extends GameObject{
 	
 	void setY(int y) {
 		this.y = y;
+	}
+	
+	void setMovingState(String mov) {
+		movingState = mov;
 	}
 	
 	
@@ -84,9 +104,6 @@ public class Character extends GameObject{
 			}
 			walkCount++;
 		}
-		if (movingState.equals("")) {
-			walkCount++;
-		}
 	}
 	
 	void keyPieceCheck() {
@@ -100,42 +117,47 @@ public class Character extends GameObject{
 			if (movingState.equals("")) {
 				drawImg(g, stand);
 			} else if (movingState == "right") {
-				if (walkCount/10 % 3 == 0) {
+				if (walkCount/9 % 4 == 0) {
 					drawImg(g, right1);
-				} else if (walkCount/10 % 3 == 1) {
+				} else if (walkCount/9 % 4 == 1) {
 					drawImg(g, right2);
-				} else if (walkCount/10 % 3 == 2) {
-					g.setColor(Color.YELLOW);
-					g.fillRect(x, y, width, height);
+				} else if (walkCount/9 % 4 == 2) {
+					drawImg(g, right1);
+				} else if (walkCount/9 % 4 == 3) {
+					drawImg(g, right3);
 				}
-				
 			} else if (movingState == "left") {
-				if (walkCount/10 % 3 == 0) {
-					g.setColor(Color.GREEN);
-				} else if (walkCount/10 % 3 == 1) {
-					g.setColor(Color.BLUE);
-				} else if (walkCount/10 % 3 == 2) {
-					g.setColor(Color.PINK);
+				if (walkCount/9 % 4 == 0) {
+					drawImg(g, left1);
+				} else if (walkCount/9 % 4 == 1) {
+					drawImg(g, left2);
+				} else if (walkCount/9 % 4 == 2) {
+					drawImg(g, left1);
+				} else if (walkCount/9 % 4 == 3) {
+					drawImg(g, left3);
 				}
-				g.fillRect(x, y, width, height);
 			} else if (movingState == "down") {
-				if (walkCount/10 % 3 == 0) {
-					g.setColor(Color.RED);
-				} else if (walkCount/10 % 3 == 1) {
-					g.setColor(Color.YELLOW);
-				} else if (walkCount/10 % 3 == 2) {
-					g.setColor(Color.BLUE);
+				if (walkCount/9 % 4 == 0) {
+					drawImg(g, climb1);
+				} else if (walkCount/9 % 4 == 1) {
+					drawImg(g, back);
+				} else if (walkCount/9 % 4 == 2) {
+					drawImg(g, climb2);
+				} else if (walkCount/9 % 4 == 3) {
+					drawImg(g, back);
 				}
-				g.fillRect(x, y, width, height);
 			} else if (movingState == "up") {
-				if (walkCount/10 % 3 == 0) {
-					g.setColor(Color.ORANGE);
-				} else if (walkCount/10 % 3 == 1) {
-					g.setColor(Color.GREEN);
-				} else if (walkCount/10 % 3 == 2) {
-					g.setColor(Color.PINK);
+				if (walkCount/9 % 4 == 0) {
+					drawImg(g, climb2);
+				} else if (walkCount/9 % 4 == 1) {
+					drawImg(g, back);
+				} else if (walkCount/9 % 4 == 2) {
+					drawImg(g, climb1);
+				} else if (walkCount/9 % 4 == 3) {
+					drawImg(g, back);
 				}
-				g.fillRect(x, y, width, height);
+			} else if (movingState == "check") {
+				drawImg(g, back);
 			}
 	}
 

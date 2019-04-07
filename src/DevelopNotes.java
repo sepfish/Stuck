@@ -140,13 +140,30 @@ public class DevelopNotes {
  *		 added Delight In Victory - Tales of Xillia OST Extended (dooooo doodoodoodoo doodoodoo doodoo da doodoodoodoo da doo doo da doo)
  *		 added stairs
  *4/5 part 2: please rescue the character files from the main build path thanks
+ *4/7	 makeup lab :) also spring xander came home for some odd reason. all I was doing was yolo summoning. whatever I'm not complaining
+ *		 added character sprite portraits. MOST OF THEM. forgot the ones for walking down stairs >:( they look kinda sloppy but eh. 
+ *		 left1.png is also messed up whoops haha
+ *		 the first room is kinda grayish maybe add some ~color~
+ *		 the side table... is not checking?? my brain is fried rn so I can't figure out why
+ *		 safe's key is now called "forgotten key" to clear up the misunderstanding about the Other Chest and the Other Key
+ *		 the help thing was wrong... ugh... so now press enter to check
+ *		 this is more of a preference thing... but doing the "inbetween" sprites of the character would probably help it ~flow~ better
+ *		 mirror is updated!
+ *		 added a picture frame on floor 2 but haven't drawn it yet. draw it next time I guess
+ *		 lamp looks kinda sketchy but that's ok. maybe move the clock a little bit
+ *		 once you fix the side table, you'll be pretty much done!! how bout that
+ *		 Made it so that you can't see the key under the door unless you accept the note from the mirror
+ *		 Made the walking speed sliiiiightly faster.
+ *		 Made the character sliiiightly bigger (63x84 instead of 60x80). Idk if this screwed with the "hitboxes" though. It definitely showcased my terrible editing skills haha
+ *		 Removed some unneccesary code.
 */
+	// IMPORTANT!!!! YOU NOW HAVE TO PRESS ENTER TO CHECK. UNLESS YOU WANT TO DRAW THE ENTIRE HELP THING AGAIN. 
+	// PLEASE DON'T PRESS SPACE AND WONDER WHY IT ISN'T WORKING
 	
 	/*GRAPHICS THAT NEED TO BE UPDATED
 	 * - door
 	 * - character
 	 * - clock
-	 * - stairs
 	 */
 	
 	//3.15.19: possible to win the game

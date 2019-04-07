@@ -78,23 +78,23 @@ public class ObjectManager {
 		interactObjects.add(hole);
 		interactObjects.add(sofa);
 		interactObjects.add(computer);
-		interactObjects.add(safe);
 		interactObjects.add(sideTable);
+		interactObjects.add(safe);
 		//draw the images for the interactObjects
 		//(room 1)
 		door.setInside("DOOR KEY", "key3.png", "door.png", "", 1, false);
 		obj1.setInside("nothing", "clock.png", "chesttest.png", "chesttest1.png", 1, false);
 		chest.setInside("GLUE BOTTLE", "glue.png", "chesttest.png", "chesttest1.png", 1, false);
 		chest.lock();
-		mirror.setInside("NOTE", "note.png", "mirror.png", "", 1, false);
-		safe.setInside("OTHER KEY", "key2.png", "safetest.png", "", 1, false);
+		mirror.setInside("NOTE", "note.png", "mirror1.png", "mirror4.png", 1, false);
+		safe.setInside("FORGOTTEN KEY", "key2.png", "safetest.png", "", 1, false);
 		ladderR1.setImg("long.jpg");
 		//(room 2)
 		desk.setInside("CHEST KEY", "key.png", "desk.png", "", 2, true);
 		hole.setInside("STICK", "stick.png", "hole.png", "", 2, false);
 		sofa.setInside("PENCIL", "pencil.png", "sofa.png", "", 2, false);
 		computer.setInside("nothing", "", "computer1.png", "computer.png", 2, false);
-		sideTable.setInside("nothing", "", "sidetabletest.png", "", 2, false);
+		sideTable.setInside("nothing", "sidetabletest.png", "sidetabletest.png", "", 2, false);
 		ladderR2.setImg("stairstest.png");
 	}
 	
@@ -116,7 +116,7 @@ public class ObjectManager {
 		chest.setName("OTHER CHEST");
 		chest.drawImgTemp(g);
 		mirror.setName("MIRROR");
-		mirror.drawImg(g);
+		mirror.drawImgTemp(g);
 		safe.setName("SAFE");
 		safe.drawImg(g);
 	}
@@ -166,6 +166,8 @@ public class ObjectManager {
 	
 //THE GIANT CHECK METHOD-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void check(InteractObject o) {
+		chara.setMovingState("check");
+		System.out.println(o.name);
 		random = new Random();
 		int rand = random.nextInt(3);
 		//DOOR
@@ -182,10 +184,10 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "You open the DOOR.", "", JOptionPane.INFORMATION_MESSAGE, icon);
 				chara.roomState = 3;
 			} else {
-				if (mirrorCheck == 0) {
+				if (mirrorCheck == 0 || !mirror.getObject) {
 					JOptionPane.showMessageDialog(null, "The DOOR is locked.\nYou must find the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 				} else {
-					if (doorCheck == 0) {
+					if (doorCheck == 0 && mirror.getObject) {
 						JOptionPane.showMessageDialog(null, "The DOOR is locked.\nYou must find the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 						JOptionPane.showMessageDialog(null, "You crouch down...\nThere's something under the door.", "STUCK?", JOptionPane.INFORMATION_MESSAGE, icon);
 						JOptionPane.showMessageDialog(null, "It's the KEY. You try reaching for it, but your arm's not long enough.", "FOUND THE KEY", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -195,7 +197,6 @@ public class ObjectManager {
 						JOptionPane.showMessageDialog(null, "You need to find or make something to help you get the KEY.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 					}
 				}
-					
 			}
 		//SOFA
 		} else if (o.name.equals("SOFA")) {
@@ -219,8 +220,7 @@ public class ObjectManager {
 			} else {
 				JOptionPane.showMessageDialog(null, "You notice something inside the frame of the mirror.", "MIRROR", JOptionPane.INFORMATION_MESSAGE, icon);
 				getObjectMethodNoKey(o);
-			}
-			
+			}	
 		//COMPUTER
 		} else if (o.name.equals("COMPUTER")) {
 			AudioClip beep = loadSound("beep.wav");
@@ -305,6 +305,7 @@ public class ObjectManager {
 				}
 			}
 		}
+		chara.setMovingState("");
 	}
 	
 	void getObjectMethodNoKey(InteractObject o) {
