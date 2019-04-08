@@ -156,6 +156,7 @@ public class DevelopNotes {
  *		 Made the walking speed sliiiiightly faster.
  *		 Made the character sliiiightly bigger (63x84 instead of 60x80). Idk if this screwed with the "hitboxes" though. It definitely showcased my terrible editing skills haha
  *		 Removed some unneccesary code.
+ *4/7 part 2: added fixed character portraits.
 */
 	// IMPORTANT!!!! YOU NOW HAVE TO PRESS ENTER TO CHECK. UNLESS YOU WANT TO DRAW THE ENTIRE HELP THING AGAIN. 
 	// PLEASE DON'T PRESS SPACE AND WONDER WHY IT ISN'T WORKING
