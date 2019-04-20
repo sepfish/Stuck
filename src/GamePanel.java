@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean test = false;
 	Inventory inv;
 	//songs
-	Song ibmemory;
+	Song ibmemory; //144 sec
 	boolean ibmemoryStart = false;
 	Song chaosablaze;
 	boolean chaosablazeStart = false;
@@ -39,6 +39,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean startQ = false;
 	boolean pressSomething = false;
 	Random random;
+	int oneSixtiethSeconds;
+	int seconds;
 	
 	public static BufferedImage titleImg;
 	public static BufferedImage floorImg;
@@ -55,6 +57,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		ibmemory = new Song("memory.mp3");
 		chaosablaze = new Song("chaosablaze.mp3");
 		dvictory = new Song("delightinvictory.mp3");
+		oneSixtiethSeconds = 0;
+		seconds = 0;
 		
 		try {
 			titleImg = ImageIO.read(this.getClass().getResourceAsStream("title.jpg"));
@@ -101,6 +105,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (!ibmemoryStart) {
 			ibmemory.play();
 			ibmemoryStart = true;
+		}
+		if (seconds == 144 && ibmemoryStart) {
+			ibmemory.stop();
+			ibmemoryStart = false;
 		}
 		if (obj.dramaticMoment) { 
 			ibmemory.stop();
@@ -150,6 +158,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	 @Override
 	 public void paintComponent(Graphics g){
+		oneSixtiethSeconds++;
+		if (oneSixtiethSeconds == 60) {
+			seconds++;
+			oneSixtiethSeconds = 0;
+		}
 		if (currentState == menu) {
 			drawMenuState(g);
 		} else if (currentState == room1) {

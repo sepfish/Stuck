@@ -157,6 +157,15 @@ public class DevelopNotes {
  *		 Made the character sliiiightly bigger (63x84 instead of 60x80). Idk if this screwed with the "hitboxes" though. It definitely showcased my terrible editing skills haha
  *		 Removed some unneccesary code.
  *4/7 part 2: added fixed character portraits.
+ *4/19	 JOKER STEALS THE SHOW AND ALSO CRASHES NINTENDO'S SERVERS!! ranulf finally came home oh my god and flora is the bane of my existence yet again
+ *		 finally graphics are as done as they can be honestly. I'm tired of making them :(
+ *		 added sound when you walk up stairs? I sure hope that works
+ *		 so the side table isn't checking because it's too small... ha ha I'll just leave that
+ *		 made memory actually loop. apparently it didn't before.
+ *		 changed the password... back to password... and made the hint easier
+ *		 made that "eeee" sound play slightly more often
+ *		 the drawer on the locked chest won't open unless it's unlocked
+ *		 made the check "hitboxes" 20px wider
 */
 	// IMPORTANT!!!! YOU NOW HAVE TO PRESS ENTER TO CHECK. UNLESS YOU WANT TO DRAW THE ENTIRE HELP THING AGAIN. 
 	// PLEASE DON'T PRESS SPACE AND WONDER WHY IT ISN'T WORKING

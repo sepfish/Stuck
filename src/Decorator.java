@@ -18,13 +18,14 @@ public class Decorator {
 		chair = new InteractObject(340, 460, 50, 70);
 		pframe = new InteractObject(655, 435, 25, 30);
 		//room 1
-		clock.setInside("nothing", "clock.png", "clock2.png", "", 0, false);
+		clock.setInside("nothing", "clock.png", "clock.png", "", 0, false);
 		bookshelf.setInside("nothing", "bookshelf.png", "bookshelf.png", "", 0, false);
 		//room 2
 		painting.setInside("nothing", "ib.png", "ib.png", "", 0, false);
 		lamp.setInside("nothing", "lamp.png", "lamp.png", "", 0, false);
 		pgo.setInside("nothing", "pgo.png", "pgo.png", "", 0, false);
 		chair.setInside("nothing", "chair.png", "chair.png", "", 0, false);
+		pframe.setInside("nothing", "picf.png", "picf.png", "", 0, false);
 	}
 	
 	//floor number set to 0 because I don't want them to get checked anyway

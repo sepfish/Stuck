@@ -18,7 +18,7 @@ import java.applet.AudioClip;
 import java.awt.Color;
 
 public class ObjectManager {
-	String password = "12345";
+	String password = "password";
 	String combination;
 	boolean computerUnlocked = false;
 	boolean safeUnlocked = false;
@@ -45,6 +45,7 @@ public class ObjectManager {
 	Ladder ladderR2;
 	ArrayList<InteractObject> interactObjects = new ArrayList<InteractObject>();
 	ImageIcon icon;
+	boolean squeakQ;
 	
 	ObjectManager(Character c) {
 		chara = c;
@@ -55,6 +56,7 @@ public class ObjectManager {
 		int rand4 = rand.nextInt(9);
 		combination = Integer.toString(rand1) + Integer.toString(rand2) + Integer.toString(rand3) + Integer.toString(rand4);
 		icon = new ImageIcon(this.getClass().getClassLoader().getResource("icon.png"));
+		squeakQ = false;
 		//initialize interactObjects
 		door = new InteractObject(140, 265, 90, 135);
 		obj1 = new InteractObject(265, 300, 90, 120);
@@ -98,12 +100,25 @@ public class ObjectManager {
 		ladderR2.setImg("stairstest.png");
 	}
 	
+	public AudioClip loadSound(String fileName) {
+		return JApplet.newAudioClip(getClass().getResource(fileName));
+	}
+	
 	void update() {
 		for (InteractObject i: interactObjects) {
 			i.update();
 		}
 		chara.update();
 		door.update();
+		AudioClip squeak = loadSound("sqeak.wav");
+		if (!squeakQ && (chara.movingState == "up" || chara.movingState == "down")) {
+			squeak.play();
+			squeakQ = true;
+		}
+		if (chara.movingState.equals("change") || (chara.y > 350 && chara.roomState == 1)) {
+			squeakQ = false;
+			squeak.stop();
+		}
 	}
 	
 	void drawRoom1(Graphics g) {
@@ -135,12 +150,10 @@ public class ObjectManager {
 		sideTable.drawImg(g);
 	}
 	
-	public AudioClip loadSound(String fileName) {
-		return JApplet.newAudioClip(getClass().getResource(fileName));
-	}
+	
 
 	boolean isBetween(Character c, GameObject o) {
-		if (c.x >= o.x && c.x + c.width <= o.x + o.width) {
+		if (c.x >= o.x - 10 && c.x + c.width <= o.x + o.width + 10) {
 			return true;
 		} else {
 			return false;
@@ -167,7 +180,6 @@ public class ObjectManager {
 //THE GIANT CHECK METHOD-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void check(InteractObject o) {
 		chara.setMovingState("check");
-		System.out.println(o.name);
 		random = new Random();
 		int rand = random.nextInt(3);
 		//DOOR
@@ -205,9 +217,12 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "Inside the joke book, there's a quantum physics book.\nYou open it.", "SOFA", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "Inside the quantum physics book, there's another joke book.\nYou feel a strange sense of deja vu.", "SOFA", JOptionPane.INFORMATION_MESSAGE, icon);
 				sofaCheck++;
-			} else {
+			} else if (sofaCheck == 1 || !o.getObject) {
 				JOptionPane.showMessageDialog(null, "You're reluctant to check the sofa again, but you see something wedged between the cushions.", "SOFA", JOptionPane.INFORMATION_MESSAGE, icon);
 				getObjectMethodKeyPieces(o);
+				sofaCheck++;
+			} else if (sofaCheck > 1 && o.getObject){
+				JOptionPane.showMessageDialog(null, "The joke book sits threateningly on the sofa. You decide to leave.", "SOFA", JOptionPane.INFORMATION_MESSAGE, icon);
 			}
 		//HOLE IN THE WALL, BECAUSE I'M LAZY
 		} else if (o.name.equals("HOLE IN THE WALL")) {
@@ -225,7 +240,7 @@ public class ObjectManager {
 		} else if (o.name.equals("COMPUTER")) {
 			AudioClip beep = loadSound("beep.wav");
 			beep.play();
-			String passwordQ = askQ("ENTER PASSWORD:\n\n\nHINT: most common password", "COMPUTER");
+			String passwordQ = askQ("ENTER 8-CHARACTER PASSWORD:\n\n\n\nHINT: most common password", "COMPUTER");
 			if (passwordQ.equalsIgnoreCase(password) && !computerUnlocked) {
 				JOptionPane.showMessageDialog(null, "You unlocked the COMPUTER.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
 				JOptionPane.showMessageDialog(null, "There's a message addressed to you.", "COMPUTER", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -260,6 +275,8 @@ public class ObjectManager {
 		//LOCKED
 		} else if (o.locked) {
 			if (o.hasKey) {
+				AudioClip eeee = loadSound("creak.wav");
+				eeee.play();
 				o.unlock();
 				JOptionPane.showMessageDialog(null, "You unlocked the " + o.name + ".", "UNLOCKED", JOptionPane.INFORMATION_MESSAGE, icon);
 				getObjectMethodNoKey(o);
@@ -282,6 +299,8 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null,  "The " + o.objInside + " inside the " + o.name + " is already in your possession.", "INSIDE", JOptionPane.INFORMATION_MESSAGE, icon);
 			}
 		//IT'S EMPTY
+		AudioClip eeee = loadSound("creak.wav");
+		eeee.play();
 		} else if (o.objInside == null || o.objInside == "nothing"){
 			if (rand == 0) {
 				JOptionPane.showMessageDialog(null, "There's nothing inside.", "INSIDE", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -291,8 +310,8 @@ public class ObjectManager {
 				JOptionPane.showMessageDialog(null, "The " + o.name + " contains nothing inside.", "INSIDE", JOptionPane.INFORMATION_MESSAGE, icon);
 			}
 		//NORMAL CHECKING
-		AudioClip scree = loadSound("creak.wav");
-		scree.play();
+		AudioClip eeee = loadSound("creak.wav");
+		eeee.play();
 		} else if (o.objInside != null && o.objInside != "nothing" && !o.getObject && !o.locked) {
 			int checkQ = JOptionPane.showOptionDialog(null, "You find a " + o.objInside + " inside the " + o.name + ".", "INSIDE", 0, JOptionPane.INFORMATION_MESSAGE, icon, new String[] {"DON'T", "TAKE IT"}, null);
 			if (checkQ == 1) {

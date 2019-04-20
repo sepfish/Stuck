@@ -53,10 +53,10 @@ public class InteractObject extends GameObject{
 	void drawImgTemp(Graphics g) {
 		if (objImg != null && isChecked == false) {
 			g.drawImage(objImg, x, y, width, height, null);
-		} else if (objImg != null && isChecked && objImgCheck != null) {
+		} else if (objImg != null && isChecked && objImgCheck != null && !locked) {
 			g.drawImage(objImgCheck, x, y, width, height, null);
 		} else {
-			draw(g);
+			drawImg(g);
 		}
 	}
 	

@@ -26,6 +26,14 @@ public class Character extends GameObject{
 	public static BufferedImage left1;
 	public static BufferedImage left2;
 	public static BufferedImage left3;
+	public static BufferedImage back1;
+	public static BufferedImage back2;
+	//public static BufferedImage back3;
+	//public static BufferedImage back4;
+	public static BufferedImage front1;
+	public static BufferedImage front2;
+	//public static BufferedImage front3;
+	//public static BufferedImage front4;
 	
 
 	Character(int x, int y, int width, int height) {
@@ -41,8 +49,17 @@ public class Character extends GameObject{
 			climb1 = ImageIO.read(this.getClass().getResourceAsStream("back1.png"));
 			climb2 = ImageIO.read(this.getClass().getResourceAsStream("back2.png"));
 			left1 = ImageIO.read(this.getClass().getResourceAsStream("left.png"));
-			left2 = ImageIO.read(this.getClass().getResourceAsStream("left1.png"));
+			left2 = ImageIO.read(this.getClass().getResourceAsStream("left11.png"));
 			left3 = ImageIO.read(this.getClass().getResourceAsStream("left2.png"));
+			back1 = ImageIO.read(this.getClass().getResourceAsStream("back1.png"));
+			back2 = ImageIO.read(this.getClass().getResourceAsStream("back2.png"));
+			//back3 = ImageIO.read(this.getClass().getResourceAsStream("back3.png"));
+			//back4 = ImageIO.read(this.getClass().getResourceAsStream("back4.png"));
+			front1 = ImageIO.read(this.getClass().getResourceAsStream("front1.png"));
+			front2 = ImageIO.read(this.getClass().getResourceAsStream("front2.png"));
+			//front3 = ImageIO.read(this.getClass().getResourceAsStream("front3.png"));
+			//front4 = ImageIO.read(this.getClass().getResourceAsStream("front4.png"));
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -98,6 +115,7 @@ public class Character extends GameObject{
 				if (y >= 500) {
 					roomState = 1;
 					justArrived = true;
+					setMovingState("change");
 				} else {
 					y += 3;
 				}
@@ -138,13 +156,13 @@ public class Character extends GameObject{
 				}
 			} else if (movingState == "down") {
 				if (walkCount/9 % 4 == 0) {
-					drawImg(g, climb1);
+					drawImg(g, front1);
 				} else if (walkCount/9 % 4 == 1) {
-					drawImg(g, back);
+					drawImg(g, stand);
 				} else if (walkCount/9 % 4 == 2) {
-					drawImg(g, climb2);
+					drawImg(g, front2);
 				} else if (walkCount/9 % 4 == 3) {
-					drawImg(g, back);
+					drawImg(g, stand);
 				}
 			} else if (movingState == "up") {
 				if (walkCount/9 % 4 == 0) {
