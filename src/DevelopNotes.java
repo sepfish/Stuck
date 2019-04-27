@@ -166,6 +166,8 @@ public class DevelopNotes {
  *		 made that "eeee" sound play slightly more often
  *		 the drawer on the locked chest won't open unless it's unlocked
  *		 made the check "hitboxes" 20px wider
+ *4/26	 dragalia lost feh crossover!! alfonse!!! also featuring "I thought you were dead", a dude masquerading as a FEH OC, and "not even playable in FEH yet"
+ *		 I sincerely hope the game is done... :\ spent way too long working on it
 */
 	// IMPORTANT!!!! YOU NOW HAVE TO PRESS ENTER TO CHECK. UNLESS YOU WANT TO DRAW THE ENTIRE HELP THING AGAIN. 
 	// PLEASE DON'T PRESS SPACE AND WONDER WHY IT ISN'T WORKING

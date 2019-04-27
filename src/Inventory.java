@@ -63,7 +63,6 @@ public class Inventory {
 		hFrame.pack();
 		JOptionPane.showMessageDialog(null, "You reach into your pocket and draw out a slip of paper.", "HELP", JOptionPane.INFORMATION_MESSAGE);
 		hFrame.setVisible(true);
-		JOptionPane.showMessageDialog(null, "[Don't forget to double check things, too.]", "HELP", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public JLabel createLabelImage(String fileName) throws MalformedURLException {
