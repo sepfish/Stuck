@@ -109,6 +109,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (seconds == 144 && ibmemoryStart) {
 			ibmemory.stop();
 			ibmemoryStart = false;
+			seconds = 0;
 		}
 		if (obj.dramaticMoment) { 
 			ibmemory.stop();
