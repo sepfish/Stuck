@@ -166,7 +166,7 @@ public class ObjectManager {
 		JOptionPane.showMessageDialog(null, "You found yourself inside this room, with no recollection of how you got here.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 		JOptionPane.showMessageDialog(null, "The only thing you can do right now is figure out how to ESCAPE.", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 		JOptionPane.showMessageDialog(null, "[Press I for inventory. Press H for help.]", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
-		JOptionPane.showMessageDialog(null, "[Don't forget to double check things, too.]", "STUCK", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "[Don't forget to double check things, too.]", "STUCK", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 	
 	String askQ(String question, String name) {

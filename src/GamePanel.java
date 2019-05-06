@@ -33,8 +33,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean ibmemoryStart = false;
 	Song chaosablaze;
 	boolean chaosablazeStart = false;
-	Song dvictory;
-	boolean dvictoryStart = false;
 	//hmm
 	boolean startQ = false;
 	boolean pressSomething = false;
@@ -56,7 +54,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		inv = new Inventory();
 		ibmemory = new Song("memory.mp3");
 		chaosablaze = new Song("chaosablaze.mp3");
-		dvictory = new Song("delightinvictory.mp3");
 		oneSixtiethSeconds = 0;
 		seconds = 0;
 		
@@ -138,18 +135,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	void drawEndState(Graphics g) {
 		ibmemory.stop();
-		random = new Random();
-		int chaosorvictory = random.nextInt(2);
-		if (chaosorvictory == 0) {
-			if (!chaosablazeStart) {
-				chaosablaze.play();
-				chaosablazeStart = true;
-			}
-		} else {
-			if (!dvictoryStart) {
-				dvictory.play();
-				dvictoryStart = true;
-			}
+		if (!chaosablazeStart) {
+			chaosablaze.play();
+			chaosablazeStart = true;
 		}
 			
 		g.drawImage(GamePanel.endImg, 0, 0, Stuck.width, Stuck.height, null);
